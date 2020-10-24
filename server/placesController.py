@@ -51,6 +51,7 @@ class PlaceController(object):
 			place.append(data['xcord'])
 			place.append(data['ycord'])
 			place.append(data['adds'])
+			place.append(data['reviews'])
 
 			self.ndp.set_place(place_id, place)
 		
