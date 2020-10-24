@@ -37,7 +37,6 @@ class _place_database:
 			mreviews = self.place_reviews[plid]
 			place = list((mname, mxcord, mycord, madds, mreviews))
 		except Exception as ex:
-			print(str(ex))
 			place = None
 
 		return place

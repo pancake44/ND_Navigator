@@ -20,7 +20,6 @@ class TestMoviesIndex(unittest.TestCase):
 		r = requests.get(self.PLACES_URL)
 		self.assertTrue(self.is_json(r.content.decode()))
 		resp = json.loads(r.content.decode())
-
 		testplace = {}
 		places = resp['places']
 		for place in places:
