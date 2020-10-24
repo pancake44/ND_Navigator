@@ -10,14 +10,13 @@ class _place_database:
 		self.place_adds = dict()
 		self.place_reviews = dict()
 
+	# reads in the place data from the ndplaces.json file and stores in dicts in the database
 	def load_places(self, place_file):
 		with open(str(pathlib.Path(__file__).parent.absolute()) + '/../server/ndplaces.json') as f:
 			data = json.load(f)
 
 		plid = 0
 		for place in data:
-			#plid = int(data['id']) 
-
 			self.place_names[plid] = str(place['name'])
 			self.place_xcords[plid] = str(place['midpoint']['max_long'])
 			self.place_ycords[plid] = str(place['midpoint']['max_lat'])
@@ -28,6 +27,7 @@ class _place_database:
 	def get_places(self):
 		return self.place_names.keys()
 
+	# returns data for a given plid
 	def get_place(self, plid):
 		try:
 			mname = self.place_names[plid]
@@ -41,6 +41,7 @@ class _place_database:
 
 		return place
 
+	# modify data for a given place's plid
 	def set_place(self, plid, place):
 		self.place_names[plid] = place[0]
 		self.place_xcords[plid] = place[1]
@@ -54,8 +55,8 @@ class _place_database:
 			self.place_reviews[plid].append(place[4])
 
 	# increment adds
+	# adds is used as a "vistor count" to keep track of how many times vistors have visited a place
 	def incr_adds(self, plid):
-		#self.place_adds[plid] += 1
 		p = int(self.place_adds[plid])
 		p += 1
 		self.place_adds[plid] = str(p)

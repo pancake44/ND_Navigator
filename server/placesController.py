@@ -20,6 +20,7 @@ class PlaceController(object):
 		place_id = int(place_id)
 
 		try:
+			# call the get_place library function
 			place = self.ndp.get_place(place_id)
 			if place is not None:
 				output['id'] = place_id
@@ -53,6 +54,8 @@ class PlaceController(object):
 			place.append(data['adds'])
 			place.append(data['reviews'])
 
+			# call the set_place library function
+			# in this context, we are editing data for a place that already exists in the database
 			self.ndp.set_place(place_id, place)
 		
 			self.ndp.incr_adds(place_id)
@@ -69,6 +72,8 @@ class PlaceController(object):
 		output['places'] = []
 		
 		try:
+			# call the get_places library function to get plids, then use the returned plids to call get_place
+			# the returned place (list) from get_place is added to a list that gets returned
 			for plid in self.ndp.get_places():
 				place = self.ndp.get_place(plid)
 				dplace = {'id':plid, 'name':place[0], 'xcord':place[1], 'ycord':place[2], 'adds':place[3], 'reviews':place[4]}
@@ -93,7 +98,9 @@ class PlaceController(object):
 		place.append(data['ycord'])
 		place.append(data['adds'])
 		place.append(data['reviews'])
-		
+	
+		# call the set_place library function
+		# in this context, we are adding data for a new place in the database
 		self.ndp.set_place(place_id, place)
 
 		return json.dumps(output)
