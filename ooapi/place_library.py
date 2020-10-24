@@ -52,7 +52,7 @@ class _place_database:
 			self.place_reviews[plid] = []
 
 		if place[4] is not None:
-			self.ndp.place_reviews[plid].append(place[4])
+			self.place_reviews[plid].append(place[4])
 
 	# increment adds
 	def incr_adds(self, plid):

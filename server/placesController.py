@@ -58,7 +58,7 @@ class PlaceController(object):
 			self.ndp.incr_adds(place_id)
 		except Exception as ex:
 			output['result'] = 'error'
-			output['message'] = 'error updating place'
+			output['message'] = str(ex)
 
 		return json.dumps(output)
 	
@@ -92,6 +92,7 @@ class PlaceController(object):
 		place.append(data['xcord'])
 		place.append(data['ycord'])
 		place.append(data['adds'])
+		place.append(data['reviews'])
 		
 		self.ndp.set_place(place_id, place)
 

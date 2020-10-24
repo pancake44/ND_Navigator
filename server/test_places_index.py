@@ -38,6 +38,7 @@ class TestMoviesIndex(unittest.TestCase):
 		m['xcord'] = '25.6'
 		m['ycord'] = '30.3'
 		m['adds'] = '0'
+		m['reviews'] = None
 		r = requests.post(self.PLACES_URL, data = json.dumps(m))
 		self.assertTrue(self.is_json(r.content.decode()))
 		resp = json.loads(r.content.decode())
