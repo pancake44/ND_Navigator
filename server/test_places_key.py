@@ -4,7 +4,7 @@ import json
 
 class TestMovies(unittest.TestCase):
 
-	SITE_URL = 'http://student10.cse.nd.edu:51040' # replace with your port number and 
+	SITE_URL = 'http://localhost:51040' # replace with your port number and 
 	print("testing for server: " + SITE_URL)
 	PLACES_URL = SITE_URL + '/places/'
 
@@ -43,6 +43,7 @@ class TestMovies(unittest.TestCase):
 		m['xcord'] = '80.9'
 		m['ycord'] = '60.5'
 		m['adds'] = '0'
+		m['reviews'] = 'Good place'
 		r = requests.put(self.PLACES_URL + str(place_id), data = json.dumps(m))
 		self.assertTrue(self.is_json(r.content.decode('utf-8')))
 		resp = json.loads(r.content.decode('utf-8'))

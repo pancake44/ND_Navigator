@@ -1,9 +1,11 @@
 # Group Members: Gerry Fernandez (gfernan2), Harrison Snow (hsnow)
 # Available ports: 51038, 51040
 import cherrypy
+#import sys
 import sys
-#sys.path.append('../ooapi/place_library.py')
+import pathlib
 from placesController import PlaceController
+sys.path.append(str(pathlib.Path(__file__).parent.absolute()) + '/../ooapi/')
 from place_library import _place_database
 
 def start_service():
@@ -21,7 +23,7 @@ def start_service():
 	conf = {
 	'global': {
 		'server.thread_pool': 5, # optional argument
-		'server.socket_host': 'student10.cse.nd.edu', # 
+		'server.socket_host': 'localhost', # 
 		'server.socket_port': 51040, #change port number to your assigned
 			},
 	'/': {

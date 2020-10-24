@@ -1,4 +1,5 @@
 import json
+import pathlib
 
 class _place_database:
 	
@@ -7,9 +8,10 @@ class _place_database:
 		self.place_xcords = dict()
 		self.place_ycords = dict()
 		self.place_adds = dict()
+		self.place_reviews = dict()
 
 	def load_places(self, place_file):
-		with open('../server/ndplaces.json') as f:
+		with open(str(pathlib.Path(__file__).parent.absolute()) + '/../server/ndplaces.json') as f:
 			data = json.load(f)
 
 		plid = 0
@@ -20,6 +22,7 @@ class _place_database:
 			self.place_xcords[plid] = str(place['midpoint']['max_long'])
 			self.place_ycords[plid] = str(place['midpoint']['max_lat'])
 			self.place_adds[plid] = str(place['adds'])
+			self.place_reviews[plid] = []
 			plid += 1
 
 	def get_places(self):
@@ -31,8 +34,10 @@ class _place_database:
 			mxcord = self.place_xcords[plid]
 			mycord = self.place_ycords[plid]
 			madds = self.place_adds[plid]
-			place = list((mname, mxcord, mycord, madds))
+			mreviews = self.place_reviews[plid]
+			place = list((mname, mxcord, mycord, madds, mreviews))
 		except Exception as ex:
+			print(str(ex))
 			place = None
 
 		return place
@@ -42,9 +47,12 @@ class _place_database:
 		self.place_xcords[plid] = place[1]
 		self.place_ycords[plid] = place[2]
 		self.place_adds[plid] = '0'
+		# if new place, set reviews to empty list
+		if plid not in self.place_reviews:
+			self.place_reviews[plid] = []
 
-	def set_name(self, plid, name):
-		self.place_names[plid] = name
+	def update_place(self, plid, review):
+		self.place_reviews[plid].append(review)
 
 	# increment adds
 	def incr_adds(self, plid):
