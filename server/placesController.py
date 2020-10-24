@@ -53,9 +53,6 @@ class PlaceController(object):
 			place.append(data['adds'])
 
 			self.ndp.set_place(place_id, place)
-
-			if data['reviews'] is not None:
-				self.ndp.update_place(place_id, data['reviews'])
 		
 			self.ndp.incr_adds(place_id)
 		except Exception as ex:
@@ -93,7 +90,7 @@ class PlaceController(object):
 		place.append(data['name'])
 		place.append(data['xcord'])
 		place.append(data['ycord'])
-		place.append(data.get('adds', 0))
+		place.append(data['adds'])
 		
 		self.ndp.set_place(place_id, place)
 

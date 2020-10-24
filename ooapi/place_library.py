@@ -46,13 +46,13 @@ class _place_database:
 		self.place_names[plid] = place[0]
 		self.place_xcords[plid] = place[1]
 		self.place_ycords[plid] = place[2]
-		self.place_adds[plid] = '0'
+		self.place_adds[plid] = place[3] 
 		# if new place, set reviews to empty list
 		if plid not in self.place_reviews:
 			self.place_reviews[plid] = []
 
-	def update_place(self, plid, review):
-		self.place_reviews[plid].append(review)
+		if place[4] is not None:
+			self.ndp.place_reviews[plid].append(place[4])
 
 	# increment adds
 	def incr_adds(self, plid):
