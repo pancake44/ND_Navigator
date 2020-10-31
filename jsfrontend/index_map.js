@@ -99,7 +99,9 @@ function addDest() {
 
 	// Load options for the new select 
 	dataJSON = getKeys();
+	console.log("dataJSON" + dataJSON);
 	data = JSON.parse(dataJSON);
+	console.log("data" + data);
 	var newOptText;
 	var newOpt;
     for(let i = 0; i < data.length; i++) {
