@@ -308,8 +308,9 @@ function getKeys(){
 	
 	console.log(reqInfo);
 	
-	return networkCall(reqInfo); 
-}
+	var returnInfo = networkCall(reqInfo);
+	console.log("return info" + returnInfo);
+	return returnInfo;
 
 function networkCall(reqInfo){
 	console.log("entered networkCall");
@@ -318,7 +319,7 @@ function networkCall(reqInfo){
 	xhr.open(reqInfo.HTTP, reqInfo.URI, true);
 	
 	xhr.onload = function(e) {
-		console.log(xhr.responseText);
+		console.log("responseText" + xhr.responseText);
 		return xhr.responseText;
 	}
 	
