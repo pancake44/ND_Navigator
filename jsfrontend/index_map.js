@@ -310,19 +310,19 @@ function getKeys(){
 	
 	var xhr = new XMLHttpRequest();
 	
-	xhr.open(reqInfo.HTTP, reqInfo.URI, true);
-	
+	xhr.open(reqInfo.HTTP, reqInfo.URI, false);
+	xhr.send(reqInfo.BODY);
+
 	xhr.onload = function(e) {
 		console.log("responseText" + xhr.responseText);
-		callback(xhr.responseText);
+		return xhr.responseText;
 	}
 	
 	xhr.onerror = function(e){
 		console.error(xhr.statusText);
 	}
-	
-	xhr.send(reqInfo.BODY);
 }
+
 
 /*
 function networkCall(reqInfo){
