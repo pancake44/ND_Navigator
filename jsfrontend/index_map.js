@@ -104,7 +104,7 @@ function addDest() {
 	console.log("data" + data);
 	var newOptText;
 	var newOpt;
-    for(let i = 0; i < data.length; i++) {
+    for(let i = 0; i < data["places"].length; i++) {
       newOpt = document.createElement('option');
 	  newOpt.setAttribute("value", i);
       newOptText = document.createTextNode(data["places"][i].name);
@@ -308,7 +308,7 @@ function getKeys(){
 	
 	console.log(reqInfo);
 	
-	networkCall(reqInfo); 
+	return networkCall(reqInfo); 
 }
 
 function networkCall(reqInfo){
