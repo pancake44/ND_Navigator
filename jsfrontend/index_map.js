@@ -179,20 +179,22 @@ function makeDirTable(selections){
 		newTd.appendChild(newTbText);
 		newTr.appendChild(newTd);
 
+		var name, xcord;
 		getKeys("GET", selections[i], function(dataJSON){
 			data = JSON.parse(dataJSON);
-		
-		//console.log("data is: " + JSON.stringify(data));
+			name = data["name"];
+			xcord = data["xcord"];
+		});
 
 		// Destination
 		newTd = document.createElement("td");
-		newTbText = document.createTextNode(data["name"]);
+		newTbText = document.createTextNode(name);
 		newTd.appendChild(newTbText);
 		newTr.appendChild(newTd);
 
 		// Xcord
 		newTd = document.createElement("td");
-		newTbText = document.createTextNode(data["xcord"]);
+		newTbText = document.createTextNode(xcord);
 		newTd.appendChild(newTbText);
 		newTr.appendChild(newTd);
 
@@ -200,7 +202,7 @@ function makeDirTable(selections){
 		newTbody.appendChild(newTr);
 		newTab.appendChild(newTbody);
 		newDiv.appendChild(newTab);
-		});
+		
 	}
 
 	/* Create reset button */
