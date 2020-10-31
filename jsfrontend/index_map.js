@@ -77,6 +77,7 @@ function addMarkers(selections){
 var destCount = 1;
 function addDest() {
 	console.log("adding another selection");
+	console.log("destCount: " + destCount);
 
 	/* Create a new form group div */
 	newDiv = document.createElement("div");
