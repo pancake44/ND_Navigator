@@ -1,7 +1,7 @@
 console.log("load page");
 
 this.renderMap();
-getKeys();
+//getKeys();
 
 var submitButton = document.getElementById("bsr-submit-button");
 submitButton.onmouseup = getFormInfo;
@@ -73,7 +73,7 @@ function addMarkers(selections){
 	})
 }
 
-var destCount = 2;
+var destCount = 1;
 function addDest() {
 	console.log("adding another selection");
 
@@ -277,21 +277,15 @@ function makeInfoTable(selections){
 	tab.style.display = "block";
 }
 
-
+/*
 function getKeys(){
 	console.log("entered getKeys")
 	
-	//var HOST_IND = document.getElementById('select-server-address').selectedIndex;
-	var HOST = "http://student04.cse.nd.edu"
-	//HOST = document.getElementById('select-server-address').options[HOST_IND].value;
-	
+	var HOST = "http://student04.cse.nd.edu"	
 	var PORT = "51040"
-	//PORT = document.getElementById('input-port-number').value;
 	
 	var URI = HOST + ":" + PORT + "/places/";
-	
 	var HTTP = "GET";
-	
 	var KEY = null;
 	
 	var reqInfo = {};
@@ -304,13 +298,14 @@ function getKeys(){
 }
 
 function networkCall(reqInfo){
+	console.log("entered networkCall");
 	var xhr = new XMLHttpRequest();
 	
 	xhr.open(reqInfo.HTTP, reqInfo.URI, true);
 	
 	xhr.onload = function(e) {
-	console.log(xhr.responseText);
-	document.getElementById('answer-label').innerHTML = xhr.responseText;
+		console.log(xhr.responseText);
+		return xhr.responseText;
 	}
 	
 	xhr.onerror = function(e){
@@ -318,5 +313,9 @@ function networkCall(reqInfo){
 	}
 	
 	xhr.send(reqInfo.BODY);
-	
 }
+*/
+
+
+
+
