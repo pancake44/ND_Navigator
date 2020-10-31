@@ -59,7 +59,7 @@ function initMap() {
 }
 
 function addMarker(xcord, ycord){
-
+	console.log("entered addMarker");
 	/* Update map with markers at locations */
 	new google.maps.Marker({
 		position: {lat: ycord, lng: xcord},
