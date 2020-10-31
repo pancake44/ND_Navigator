@@ -182,6 +182,7 @@ function makeDirTable(selections){
 		getKeys("GET", selections[i], function(dataJSON){
 			data = JSON.parse(dataJSON);
 		});
+		console.log("data" + data);
 
 		// Destination
 		newTd = document.createElement("td");
