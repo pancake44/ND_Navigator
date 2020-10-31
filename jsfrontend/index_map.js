@@ -110,7 +110,7 @@ function addDest() {
 		newOpt.setAttribute("value", i);
 		newOptText = document.createTextNode(data["places"][i].name);
 		newOpt.appendChild(newOptText);
-		newSel.appendChld(newOpt);
+		newSel.appendChild(newOpt);
 		}
 	});
 	/*
@@ -131,6 +131,7 @@ function addDest() {
 	newDiv.appendChild(newSel);
 
 	/* Add the new div to  DOM */
+	console.log("responseDiv: " + "here" + (destCount - 1));
 	var responseDiv = document.getElementById("here" + (destCount - 1));
 	responseDiv.appendChild(newDiv);
 
