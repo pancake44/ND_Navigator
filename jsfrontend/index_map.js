@@ -170,39 +170,35 @@ function makeDirTable(selections){
 	
 	var newTbText;
 	for(let i = 0; i < selections.length; i++){
-		newTr = document.createElement("tr");
-		newTr.setAttribute("class", "accordion-toggle collapsed");
-		
-		// Order
-		newTd = document.createElement("td");
-		newTbText = document.createTextNode(i+1);
-		newTd.appendChild(newTbText);
-		newTr.appendChild(newTd);
-
-		var name, xcord;
 		getKeys("GET", selections[i], function(dataJSON){
+			
 			data = JSON.parse(dataJSON);
-			name = data["name"];
-			xcord = data["xcord"];
+			newTr = document.createElement("tr");
+			newTr.setAttribute("class", "accordion-toggle collapsed");
+			
+			// Order
+			newTd = document.createElement("td");
+			newTbText = document.createTextNode(i+1);
+			newTd.appendChild(newTbText);
+			newTr.appendChild(newTd);
+
+			// Destination
+			newTd = document.createElement("td");
+			newTbText = document.createTextNode(data["name"]);
+			newTd.appendChild(newTbText);
+			newTr.appendChild(newTd);
+
+			// Xcord
+			newTd = document.createElement("td");
+			newTbText = document.createTextNode(data["xcord"]);
+			newTd.appendChild(newTbText);
+			newTr.appendChild(newTd);
+
+			// Append table row to table body
+			newTbody.appendChild(newTr);
+			newTab.appendChild(newTbody);
+			newDiv.appendChild(newTab);
 		});
-
-		// Destination
-		newTd = document.createElement("td");
-		newTbText = document.createTextNode(name);
-		newTd.appendChild(newTbText);
-		newTr.appendChild(newTd);
-
-		// Xcord
-		newTd = document.createElement("td");
-		newTbText = document.createTextNode(xcord);
-		newTd.appendChild(newTbText);
-		newTr.appendChild(newTd);
-
-		// Append table row to table body
-		newTbody.appendChild(newTr);
-		newTab.appendChild(newTbody);
-		newDiv.appendChild(newTab);
-		
 	}
 
 	/* Create reset button */
