@@ -197,10 +197,9 @@ function makeDirTable(selections){
 			// Append table row to table body
 			newTbody.appendChild(newTr);
 		});
+		newTab.appendChild(newTbody);
+		newDiv.appendChild(newTab);
 	}
-
-	newTab.appendChild(newTbody);
-	newDiv.appendChild(newTab);
 
 	/* Create reset button */
 	newBut = document.createElement("button");
