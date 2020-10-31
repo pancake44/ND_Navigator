@@ -131,13 +131,13 @@ function addDest() {
 	newDiv.appendChild(newSel);
 
 	/* Add the new div to  DOM */
-	console.log("responseDiv: " + "here" + (destCount - 1));
-	var responseDiv = document.getElementById("here" + (destCount - 1));
+	console.log("responseDiv: " + "here" + destCount);
+	var responseDiv = document.getElementById("here" + destCount);
 	responseDiv.appendChild(newDiv);
 
 	/* Add a new p to DOM for future field adds */
 	newP = document.createElement("p");
-	newP.setAttribute("id", "here" + destCount++);
+	newP.setAttribute("id", "here" + ++destCount);
 	responseDiv.appendChild(newP);
 }
 
