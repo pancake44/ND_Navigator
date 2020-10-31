@@ -3,7 +3,6 @@ console.log("load page");
 this.renderMap();
 var destCount = 1;
 addDest();
-//getKeys();
 
 var submitButton = document.getElementById("bsr-submit-button");
 submitButton.onmouseup = getFormInfo;
@@ -77,14 +76,13 @@ function addMarkers(selections){
 
 function addDest() {
 	console.log("adding another selection");
-	console.log("destCount: " + destCount);
 
-	/* Create a new form group div */
+	// Create a new form group div
 	newDiv = document.createElement("div");
 	newDiv.setAttribute("class", "form-group");
 	newDiv.setAttribute("id", "origFormDiv");
 
-	/* Create a label (w/text) for new select */
+	// Create a label (w/text) for new select 
 	newLab = document.createElement("label");
 	newLab.setAttribute("for", "dest" + destCount);
 	newLab.setAttribute("id", "dest" + destCount);
@@ -92,14 +90,14 @@ function addDest() {
 	newLab.appendChild(newLabText);
 	newDiv.appendChild(newLab);
 
-	/* Create a new select */
+	// Create a new select
 	newSel = document.createElement("select");
 	newSel.setAttribute("id", "dest" + destCount);
 	newSel.setAttribute("name", "dest");
 	newSel.setAttribute("class", "form-control");
 
 	// Load options for the new select 
-	getKeys(function(dataJSON){
+	getKeys("GET", null, function(dataJSON){
 
 		console.log("dataJSON" + dataJSON);
 		data = JSON.parse(dataJSON);
@@ -114,24 +112,11 @@ function addDest() {
 		newSel.appendChild(newOpt);
 		}
 	});
-	/*
-	var newOptText;
-	newOpt = document.createElement("option");
-	newOpt.setAttribute("value", "41.701178");
-	newOptText = document.createTextNode("41.701178");
-	newOpt.appendChild(newOptText);
-	newSel.appendChild(newOpt);
 
-	newOpt = document.createElement("option");
-	newOpt.setAttribute("value", "-86.236574");
-	newOptText = document.createTextNode("-86.236574");
-	newOpt.appendChild(newOptText);
-	newSel.appendChild(newOpt);
-	*/
 	/* Add the new sel to new div */
 	newDiv.appendChild(newSel);
 
-	/* Add the new div to  DOM */
+	/* Add the new div to DOM */
 	console.log("responseDiv: " + "here" + destCount);
 	var responseDiv = document.getElementById("here" + destCount);
 	responseDiv.appendChild(newDiv);
@@ -189,7 +174,7 @@ function makeDirTable(selections){
 	newTr.setAttribute("class", "accordion-toggle collapsed");
 	
 	newTd = document.createElement("td");
-	newTbText = document.createTextNode(i+1);
+	newTbText = document.createTextNode("hello");
 	newTd.appendChild(newTbText);
 	newTr.appendChild(newTd);
 
@@ -296,15 +281,17 @@ function makeInfoTable(selections){
 }
 
 
-function getKeys(callback){
+function getKeys(REST, KEY, callback){
 	console.log("entered getKeys")
+	console.log("REST: " + REST);
 	
 	var HOST = "http://student04.cse.nd.edu"	
 	var PORT = "51040"
 	
 	var URI = HOST + ":" + PORT + "/places/";
-	var HTTP = "GET";
-	var KEY = null;
+	var HTTP = REST
+	if(KEY)
+		URI += KEY;
 	
 	var reqInfo = {};
 	reqInfo.HTTP = HTTP;
