@@ -308,11 +308,23 @@ function getKeys(){
 	
 	console.log(reqInfo);
 	
-	var returnInfo = networkCall(reqInfo);
-	console.log("return info" + returnInfo);
-	return returnInfo;
+	var xhr = new XMLHttpRequest();
+	
+	xhr.open(reqInfo.HTTP, reqInfo.URI, true);
+	
+	xhr.onload = function(e) {
+		console.log("responseText" + xhr.responseText);
+		return xhr.responseText;
+	}
+	
+	xhr.onerror = function(e){
+		console.error(xhr.statusText);
+	}
+	
+	xhr.send(reqInfo.BODY);
 }
 
+/*
 function networkCall(reqInfo){
 	console.log("entered networkCall");
 	var xhr = new XMLHttpRequest();
@@ -330,7 +342,7 @@ function networkCall(reqInfo){
 	
 	xhr.send(reqInfo.BODY);
 }
-
+*/
 
 
 
