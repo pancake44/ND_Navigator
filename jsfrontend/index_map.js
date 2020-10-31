@@ -105,7 +105,7 @@ function addDest() {
     for(let i = 0; i < data.length; i++) {
       newOpt = document.createElement('option');
 	  newOpt.setAttribute("value", i);
-      newOptText = document.createTextNode(data[i].name);
+      newOptText = document.createTextNode(data["places"][i].name);
       newOpt.appendChild(newOptText);
 	  newSel.appendChld(newOpt);
     }
