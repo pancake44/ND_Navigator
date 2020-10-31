@@ -199,7 +199,7 @@ function makeDirTable(selections){
 				newTab.appendChild(newTbody);
 				newDiv.appendChild(newTab);
 			}
-			addMarker(data["ycord"], data["xcord"]);
+			addMarker(parseFloat(data["ycord"]), parseFloat(data["xcord"]));
 		});
 	}
 
