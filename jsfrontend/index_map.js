@@ -98,19 +98,21 @@ function addDest() {
 	newSel.setAttribute("class", "form-control");
 
 	// Load options for the new select 
-	dataJSON = getKeys();
-	console.log("dataJSON" + dataJSON);
-	data = JSON.parse(dataJSON);
-	console.log("data" + data);
-	var newOptText;
-	var newOpt;
-    for(let i = 0; i < data["places"].length; i++) {
-      newOpt = document.createElement('option');
-	  newOpt.setAttribute("value", i);
-      newOptText = document.createTextNode(data["places"][i].name);
-      newOpt.appendChild(newOptText);
-	  newSel.appendChld(newOpt);
-    }
+	getKeys(function(dataJSON){
+
+		console.log("dataJSON" + dataJSON);
+		data = JSON.parse(dataJSON);
+		console.log("data" + data);
+		var newOptText;
+		var newOpt;
+		for(let i = 0; i < data["places"].length; i++) {
+		newOpt = document.createElement('option');
+		newOpt.setAttribute("value", i);
+		newOptText = document.createTextNode(data["places"][i].name);
+		newOpt.appendChild(newOptText);
+		newSel.appendChld(newOpt);
+		}
+	});
 	/*
 	var newOptText;
 	newOpt = document.createElement("option");
@@ -292,7 +294,7 @@ function makeInfoTable(selections){
 }
 
 
-function getKeys(){
+function getKeys(callback){
 	console.log("entered getKeys")
 	
 	var HOST = "http://student04.cse.nd.edu"	
@@ -310,17 +312,18 @@ function getKeys(){
 	
 	var xhr = new XMLHttpRequest();
 	
-	xhr.open(reqInfo.HTTP, reqInfo.URI, false);
-	xhr.send(reqInfo.BODY);
+	xhr.open(reqInfo.HTTP, reqInfo.URI, true);
 
 	xhr.onload = function(e) {
 		console.log("responseText" + xhr.responseText);
-		return xhr.responseText;
+		callback(xhr.responseText);
 	}
 	
 	xhr.onerror = function(e){
 		console.error(xhr.statusText);
 	}
+
+	xhr.send(reqInfo.BODY);
 }
 
 
