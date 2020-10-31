@@ -8,6 +8,11 @@ from placesController import PlaceController
 sys.path.append(str(pathlib.Path(__file__).parent.absolute()) + '/../ooapi/')
 from place_library import _place_database
 
+def CORS():
+    cherrypy.response.headers["Access-Control-Allow-Origin"] = "*"
+    cherrypy.response.headers["Access-Control-Allow-Methods"] = "GET, PUT, POST, DELETE, OPTIONS"
+    cherrypy.response.headers["Access-Control-Allow-Credentials"] = "true"
+
 def start_service():
 	dispatcher = cherrypy.dispatch.RoutesDispatcher()
 
@@ -28,6 +33,7 @@ def start_service():
 			},
 	'/': {
 		'request.dispatch': dispatcher,
+		'tools.CORS.on':True,
 		}
 	}
 	
@@ -39,5 +45,6 @@ def start_service():
 
 
 if __name__ == '__main__':
+	cherrypy.tools.CORS = cherrypy.Tool('before_finalize', CORS)
 	start_service()
 
