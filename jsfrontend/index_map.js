@@ -1,6 +1,7 @@
 console.log("load page");
 
 this.renderMap();
+addDest();
 //getKeys();
 
 var submitButton = document.getElementById("bsr-submit-button");
@@ -82,7 +83,6 @@ function addDest() {
 	newDiv.setAttribute("class", "form-group");
 	newDiv.setAttribute("id", "origFormDiv");
 
-
 	/* Create a label (w/text) for new select */
 	newLab = document.createElement("label");
 	newLab.setAttribute("for", "dest" + destCount);
@@ -97,7 +97,19 @@ function addDest() {
 	newSel.setAttribute("name", "dest");
 	newSel.setAttribute("class", "form-control");
 
-	/* Load options for the new select */
+	// Load options for the new select 
+	dataJSON = getKeys();
+	data = JSON.parse(dataJSON);
+	var newOptText;
+	var newOpt;
+    for(let i = 0; i < data.length; i++) {
+      newOpt = document.createElement('option');
+	  newOpt.setAttribute("value", i);
+      newOptText = document.createTextNode(data[i].name);
+      newOpt.appendChild(newOptText);
+	  newSel.appendChld(newOpt);
+    }
+	/*
 	var newOptText;
 	newOpt = document.createElement("option");
 	newOpt.setAttribute("value", "41.701178");
@@ -110,7 +122,7 @@ function addDest() {
 	newOptText = document.createTextNode("-86.236574");
 	newOpt.appendChild(newOptText);
 	newSel.appendChild(newOpt);
-
+	*/
 	/* Add the new sel to new div */
 	newDiv.appendChild(newSel);
 
@@ -277,7 +289,7 @@ function makeInfoTable(selections){
 	tab.style.display = "block";
 }
 
-/*
+
 function getKeys(){
 	console.log("entered getKeys")
 	
@@ -314,7 +326,7 @@ function networkCall(reqInfo){
 	
 	xhr.send(reqInfo.BODY);
 }
-*/
+
 
 
 
