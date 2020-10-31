@@ -181,8 +181,8 @@ function makeDirTable(selections){
 
 		getKeys("GET", selections[i], function(dataJSON){
 			data = JSON.parse(dataJSON);
-		});
-		console.log("data is: " + JSON.stringify(data));
+		
+		//console.log("data is: " + JSON.stringify(data));
 
 		// Destination
 		newTd = document.createElement("td");
@@ -200,6 +200,7 @@ function makeDirTable(selections){
 		newTbody.appendChild(newTr);
 		newTab.appendChild(newTbody);
 		newDiv.appendChild(newTab);
+		});
 	}
 
 	/* Create reset button */
