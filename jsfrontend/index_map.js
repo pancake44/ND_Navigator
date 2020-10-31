@@ -1,6 +1,7 @@
 console.log("load page");
 
 this.renderMap();
+var destCount = 1;
 addDest();
 //getKeys();
 
@@ -74,7 +75,6 @@ function addMarkers(selections){
 	})
 }
 
-destCount = 1;
 function addDest() {
 	console.log("adding another selection");
 	console.log("destCount: " + destCount);
