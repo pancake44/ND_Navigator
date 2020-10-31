@@ -59,17 +59,11 @@ function initMap() {
 	});
 }
 
-function addMarkers(selections){
+function addMarker(xcord, ycord){
 
 	/* Update map with markers at locations */
-	//for(let i = 0; i < selections.length; i++){
 	new google.maps.Marker({
-		position: {lat: 41.701675, lng: -86.236769},
-		map,
-	})
- // }
-	new google.maps.Marker({
-		position: {lat: 41.700898, lng: -86.236192},
+		position: {lat: ycord, lng: xcord},
 		map,
 	})
 }
@@ -205,6 +199,7 @@ function makeDirTable(selections){
 				newTab.appendChild(newTbody);
 				newDiv.appendChild(newTab);
 			}
+			addMarker(data["ycord"], data["xcord"]);
 		});
 	}
 
