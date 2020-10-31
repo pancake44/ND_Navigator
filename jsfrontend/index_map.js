@@ -192,19 +192,19 @@ function makeDirTable(selections){
 				newTbody.appendChild(newTr);
 				newTab.appendChild(newTbody);
 				newDiv.appendChild(newTab);
-				continue;
 			}
-			
-			// Xcord
-			newTd = document.createElement("td");
-			newTbText = document.createTextNode(data["xcord"]);
-			newTd.appendChild(newTbText);
-			newTr.appendChild(newTd);
-
-			// Append table row to table body
-			newTbody.appendChild(newTr);
-			newTab.appendChild(newTbody);
-			newDiv.appendChild(newTab);
+			else{
+				// Xcord
+				newTd = document.createElement("td");
+				newTbText = document.createTextNode(data["xcord"]);
+				newTd.appendChild(newTbText);
+				newTr.appendChild(newTd);
+				
+				// Append table row to table body
+				newTbody.appendChild(newTr);
+				newTab.appendChild(newTbody);
+				newDiv.appendChild(newTab);
+			}
 		});
 	}
 
