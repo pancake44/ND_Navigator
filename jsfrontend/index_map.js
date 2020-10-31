@@ -74,7 +74,7 @@ function addMarkers(selections){
 	})
 }
 
-var destCount = 1;
+destCount = 1;
 function addDest() {
 	console.log("adding another selection");
 	console.log("destCount: " + destCount);
