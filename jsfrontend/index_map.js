@@ -188,6 +188,13 @@ function makeDirTable(selections){
 			newTd.appendChild(newTbText);
 			newTr.appendChild(newTd);
 
+			if(i == 0){
+				newTbody.appendChild(newTr);
+				newTab.appendChild(newTbody);
+				newDiv.appendChild(newTab);
+				continue;
+			}
+			
 			// Xcord
 			newTd = document.createElement("td");
 			newTbText = document.createTextNode(data["xcord"]);
