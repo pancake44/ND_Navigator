@@ -311,6 +311,7 @@ function getKeys(){
 	var returnInfo = networkCall(reqInfo);
 	console.log("return info" + returnInfo);
 	return returnInfo;
+}
 
 function networkCall(reqInfo){
 	console.log("entered networkCall");
