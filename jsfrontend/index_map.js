@@ -162,7 +162,7 @@ function makeDirTable(selections){
 	newTh.appendChild(newThText);
 	newTrow.appendChild(newTh);
 
-	/* Append header row to table */
+	// Append header row to table
 	newThead.appendChild(newTrow);
 	newTab.appendChild(newThead);
 
@@ -170,25 +170,38 @@ function makeDirTable(selections){
 	
 	var newTbText;
 	for(let i = 0; i < selections.length; i++){
-	newTr = document.createElement("tr");
-	newTr.setAttribute("class", "accordion-toggle collapsed");
-	
-	newTd = document.createElement("td");
-	newTbText = document.createTextNode("hello");
-	newTd.appendChild(newTbText);
-	newTr.appendChild(newTd);
-
-	for(let j = 0; j < 2; j++){
+		newTr = document.createElement("tr");
+		newTr.setAttribute("class", "accordion-toggle collapsed");
+		
+		// Order
 		newTd = document.createElement("td");
-		newTbText = document.createTextNode(selections[i]);
+		newTbText = document.createTextNode(i+1);
 		newTd.appendChild(newTbText);
 		newTr.appendChild(newTd);
+
+		getKeys("GET", selections[i], function(dataJSON){
+			data = JSON.parse(dataJSON);
+
+			// Destination
+			newTd = document.createElement("td");
+			newTbText = document.createTextNode(data["places"]["name"]);
+			newTd.appendChild(newTbText);
+			newTr.appendChild(newTd);
+
+			// Xcord
+			newTd = document.createElement("td");
+			newTbText = document.createTextNode(data["places"]["xcord"]);
+			newTd.appendChild(newTbText);
+			newTr.appendChild(newTd);
+
+			// Append table row to table body
+			newTbody.appendChild(newTr);
+		});
 	}
-	newTbody.appendChild(newTr);
+
 	newTab.appendChild(newTbody);
 	newDiv.appendChild(newTab);
-	}
-	
+
 	/* Create reset button */
 	newBut = document.createElement("button");
 	newBut.setAttribute("type", "button");
