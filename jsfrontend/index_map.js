@@ -105,11 +105,11 @@ function addDest() {
 		var newOptText;
 		var newOpt;
 		for(let i = 0; i < data["places"].length; i++) {
-		newOpt = document.createElement('option');
-		newOpt.setAttribute("value", i);
-		newOptText = document.createTextNode(data["places"][i].name);
-		newOpt.appendChild(newOptText);
-		newSel.appendChild(newOpt);
+			newOpt = document.createElement('option');
+			newOpt.setAttribute("value", i);
+			newOptText = document.createTextNode(data["places"][i].name);
+			newOpt.appendChild(newOptText);
+			newSel.appendChild(newOpt);
 		}
 	});
 
@@ -181,22 +181,22 @@ function makeDirTable(selections){
 
 		getKeys("GET", selections[i], function(dataJSON){
 			data = JSON.parse(dataJSON);
-
-			// Destination
-			newTd = document.createElement("td");
-			newTbText = document.createTextNode(data["name"]);
-			newTd.appendChild(newTbText);
-			newTr.appendChild(newTd);
-
-			// Xcord
-			newTd = document.createElement("td");
-			newTbText = document.createTextNode(data["xcord"]);
-			newTd.appendChild(newTbText);
-			newTr.appendChild(newTd);
-
-			// Append table row to table body
-			newTbody.appendChild(newTr);
 		});
+
+		// Destination
+		newTd = document.createElement("td");
+		newTbText = document.createTextNode(data["name"]);
+		newTd.appendChild(newTbText);
+		newTr.appendChild(newTd);
+
+		// Xcord
+		newTd = document.createElement("td");
+		newTbText = document.createTextNode(data["xcord"]);
+		newTd.appendChild(newTbText);
+		newTr.appendChild(newTd);
+
+		// Append table row to table body
+		newTbody.appendChild(newTr);
 		newTab.appendChild(newTbody);
 		newDiv.appendChild(newTab);
 	}
