@@ -314,7 +314,7 @@ function getKeys(){
 	
 	xhr.onload = function(e) {
 		console.log("responseText" + xhr.responseText);
-		return xhr.responseText;
+		callback(xhr.responseText);
 	}
 	
 	xhr.onerror = function(e){
