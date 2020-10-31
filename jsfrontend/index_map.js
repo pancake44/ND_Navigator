@@ -184,13 +184,13 @@ function makeDirTable(selections){
 
 			// Destination
 			newTd = document.createElement("td");
-			newTbText = document.createTextNode(data["places"]["name"]);
+			newTbText = document.createTextNode(data["name"]);
 			newTd.appendChild(newTbText);
 			newTr.appendChild(newTd);
 
 			// Xcord
 			newTd = document.createElement("td");
-			newTbText = document.createTextNode(data["places"]["xcord"]);
+			newTbText = document.createTextNode(data["xcord"]);
 			newTd.appendChild(newTbText);
 			newTr.appendChild(newTd);
 
