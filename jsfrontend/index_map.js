@@ -212,7 +212,7 @@ async function makeDirTable(selections){
 	var newTbText;
 	for(let i = 0; i < callbackArr.length; i++){
 		data = JSON.parse(callbackArr[i]);
-		//console.log("the data: " + data);
+		console.log("the data: " + data);
 		newTr = document.createElement("tr");
 		newTr.setAttribute("class", "accordion-toggle collapsed");
 		
