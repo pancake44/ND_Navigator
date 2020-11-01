@@ -166,7 +166,7 @@ async function makeDirTable(selections){
 	for(let i = 0; i < selections.length; i++){
 		getKeys("GET", selections[i], function(dataJSON){
 			//data = JSON.parse(dataJSON);
-			callbackArr.push(data);
+			callbackArr.push(dataJSON);
 			/*
 			newTr = document.createElement("tr");
 			newTr.setAttribute("class", "accordion-toggle collapsed");
@@ -212,6 +212,7 @@ async function makeDirTable(selections){
 	var newTbText;
 	for(let i = 0; i < callbackArr.length; i++){
 		data = JSON.parse(callbackArr[i]);
+		//console.log("the data: " + data);
 		newTr = document.createElement("tr");
 		newTr.setAttribute("class", "accordion-toggle collapsed");
 		
