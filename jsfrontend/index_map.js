@@ -92,8 +92,7 @@ async function addDest() {
 	newSel.setAttribute("class", "form-control");
 
 	// Load options for the new select 
-	//getKeys("GET", null, function(dataJSON){
-		const dataJSON = await getKeys("GET", null);
+	getKeys("GET", null, function(dataJSON){
 		console.log("dataJSON" + dataJSON);
 		data = JSON.parse(dataJSON);
 		console.log("data" + data);
@@ -106,7 +105,7 @@ async function addDest() {
 			newOpt.appendChild(newOptText);
 			newSel.appendChild(newOpt);
 		}
-	//});
+	});
 
 	/* Add the new sel to new div */
 	newDiv.appendChild(newSel);
@@ -163,11 +162,12 @@ async function makeDirTable(selections){
 
 	newTbody = document.createElement("tbody");
 	
-	var newTbText;
+	var callbackArr = [];
 	for(let i = 0; i < selections.length; i++){
-		//getKeys("GET", selections[i], function(dataJSON){
-			const dataJSON = await getKeys("GET", selections[i])
-			data = JSON.parse(dataJSON);
+		getKeys("GET", selections[i], function(dataJSON){
+			//data = JSON.parse(dataJSON);
+			callbackArr.push(data);
+			/*
 			newTr = document.createElement("tr");
 			newTr.setAttribute("class", "accordion-toggle collapsed");
 			
@@ -183,12 +183,12 @@ async function makeDirTable(selections){
 			newTd.appendChild(newTbText);
 			newTr.appendChild(newTd);
 
-			/*if(i == 0){
+			if(i == 0){
 				newTbody.appendChild(newTr);
 				newTab.appendChild(newTbody);
 				newDiv.appendChild(newTab);
 			}
-			else{*/
+			else{
 				// Xcord
 				newTd = document.createElement("td");
 				newTbText = document.createTextNode(data["xcord"]);
@@ -205,8 +205,49 @@ async function makeDirTable(selections){
 			position: {lat: parseFloat(data["ycord"]), lng: parseFloat(data["xcord"])},
 			map: map,
 			});
- 
-		//});
+			*/
+		});
+	}
+
+	var newTbText;
+	for(let i = 0; i < callbackArr.length; i++){
+		data = JSON.parse(callbackArr[i]);
+		newTr = document.createElement("tr");
+		newTr.setAttribute("class", "accordion-toggle collapsed");
+		
+		// Order
+		newTd = document.createElement("td");
+		newTbText = document.createTextNode(i+1);
+		newTd.appendChild(newTbText);
+		newTr.appendChild(newTd);
+
+		// Destination
+		newTd = document.createElement("td");
+		newTbText = document.createTextNode(data["name"]);
+		newTd.appendChild(newTbText);
+		newTr.appendChild(newTd);
+
+		if(i == 0){
+			newTbody.appendChild(newTr);
+			newTab.appendChild(newTbody);
+			newDiv.appendChild(newTab);
+		}
+		else{
+			// Xcord
+			newTd = document.createElement("td");
+			newTbText = document.createTextNode(data["xcord"]);
+			newTd.appendChild(newTbText);
+			newTr.appendChild(newTd);
+			
+			// Append table row to table body
+			newTbody.appendChild(newTr);
+			newTab.appendChild(newTbody);
+			newDiv.appendChild(newTab);
+		}
+		new google.maps.Marker({
+			position: {lat: parseFloat(data["ycord"]), lng: parseFloat(data["xcord"])},
+			map: map,
+		});
 	}
 
 	/* Create reset button */
@@ -300,7 +341,7 @@ function makeInfoTable(selections){
 }
 
 
-function getKeys(REST, KEY/*, callback*/){
+function getKeys(REST, KEY, callback){
 	console.log("entered getKeys")
 	console.log("REST: " + REST);
 	
@@ -324,8 +365,7 @@ function getKeys(REST, KEY/*, callback*/){
 
 	xhr.onload = function(e) {
 		console.log("responseText" + xhr.responseText);
-		//callback(xhr.responseText);
-		return xhr.responseText;
+		callback(xhr.responseText);
 	}
 	
 	xhr.onerror = function(e){
