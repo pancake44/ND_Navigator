@@ -69,7 +69,7 @@ function addMarker(xcord, ycord){
 }
 */
 
-function addDest() {
+async function addDest(){
 	console.log("adding another selection");
 
 	// Create a new form group div
@@ -92,7 +92,8 @@ function addDest() {
 	newSel.setAttribute("class", "form-control");
 
 	// Load options for the new select 
-	getKeys("GET", null, function(dataJSON){
+	//getKeys("GET", null, function(dataJSON){
+		dataJSON = getKeys("GET", null);
 		console.log("dataJSON" + dataJSON);
 		data = JSON.parse(dataJSON);
 		console.log("data" + data);
@@ -105,7 +106,7 @@ function addDest() {
 			newOpt.appendChild(newOptText);
 			newSel.appendChild(newOpt);
 		}
-	});
+	//});
 
 	/* Add the new sel to new div */
 	newDiv.appendChild(newSel);
@@ -121,7 +122,7 @@ function addDest() {
 	responseDiv.appendChild(newP);
 }
 
-function makeDirTable(selections){
+async function makeDirTable(selections){
 	console.log("entered make dir table");
 
 	/* Create a new div for the table */
@@ -165,7 +166,8 @@ function makeDirTable(selections){
 	var newTbText;
 	var callbackArr = [];
 	for(let i = 0; i < selections.length; i++){
-		getKeys("GET", selections[i], function(dataJSON){
+		//getKeys("GET", selections[i], function(dataJSON){
+			dataJSON = getKeys("GET", selections[i]);
 			data = JSON.parse(dataJSON);
 			console.log("data being pushed: " + data);
 			callbackArr.push(data);
@@ -208,7 +210,7 @@ function makeDirTable(selections){
 				map: map,
 			});
 			*/
-		});
+		//});
 	}
 
 	console.log("arr len: " + callbackArr.length);
@@ -304,38 +306,45 @@ function makeInfoTable(selections){
 }
 
 
-function getKeys(REST, KEY, callback){
-	console.log("entered getKeys")
-	console.log("REST: " + REST);
-	
-	var HOST = "http://student10.cse.nd.edu"	
-	var PORT = "51040"
-	
-	var URI = HOST + ":" + PORT + "/places/";
-	var HTTP = REST
-	if(KEY)
-		URI += KEY;
-	
-	var reqInfo = {};
-	reqInfo.HTTP = HTTP;
-	reqInfo.URI = URI;
-	
-	console.log(reqInfo);
-	
-	var xhr = new XMLHttpRequest();
-	
-	xhr.open(reqInfo.HTTP, reqInfo.URI, true);
+function getKeys(REST, KEY/*, callback*/){
+	return new Promise(function (resolve, reject) {
+		console.log("entered getKeys")
+		console.log("REST: " + REST);
+		
+		var HOST = "http://student10.cse.nd.edu"	
+		var PORT = "51040"
+		
+		var URI = HOST + ":" + PORT + "/places/";
+		var HTTP = REST
+		if(KEY)
+			URI += KEY;
+		
+		var reqInfo = {};
+		reqInfo.HTTP = HTTP;
+		reqInfo.URI = URI;
+		
+		console.log(reqInfo);
+		
+		var xhr = new XMLHttpRequest();
+		
+		xhr.open(reqInfo.HTTP, reqInfo.URI, true);
 
-	xhr.onload = function(e) {
-		console.log("responseText" + xhr.responseText);
-		callback(xhr.responseText);
-	}
-	
-	xhr.onerror = function(e){
-		console.error(xhr.statusText);
-	}
+		xhr.onload = function(e) {
+			console.log("responseText" + xhr.responseText);
+			//callback(xhr.responseText);
+			resolve(xhr.responseText);
+		}
+		
+		xhr.onerror = function(e){
+			console.error(xhr.statusText);
+			reject({
+                status: this.status,
+                statusText: xhr.statusText
+            });
+		}
 
-	xhr.send(reqInfo.BODY);
+		xhr.send(reqInfo.BODY);
+	});
 }
 
 
