@@ -345,7 +345,7 @@ function getKeys(REST, KEY, callback){
 	console.log("entered getKeys")
 	console.log("REST: " + REST);
 	
-	var HOST = "http://student04.cse.nd.edu"	
+	var HOST = "http://student06.cse.nd.edu"	
 	var PORT = "51040"
 	
 	var URI = HOST + ":" + PORT + "/places/";
