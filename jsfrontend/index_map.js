@@ -69,7 +69,7 @@ function addMarker(xcord, ycord){
 }
 */
 
-async function addDest() {
+function addDest() {
 	console.log("adding another selection");
 
 	// Create a new form group div
@@ -166,8 +166,8 @@ function makeDirTable(selections){
 	var bool = true;
 	for(let i = 0; i < selections.length; i++){
 		if(bool == true){
+			bool = false;
 			getKeys("GET", selections[i], function(dataJSON){
-				bool = false;
 				data = JSON.parse(dataJSON);
 				
 				newTr = document.createElement("tr");
@@ -206,8 +206,8 @@ function makeDirTable(selections){
 					position: {lat: parseFloat(data["ycord"]), lng: parseFloat(data["xcord"])},
 					map: map,
 				});
-				bool = true;
 			});
+			bool = true;
 		}
 	}
 
