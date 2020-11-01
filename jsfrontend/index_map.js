@@ -2,6 +2,7 @@ console.log("load page");
 
 this.renderMap();
 var destCount = 1;
+var markerArr = [];
 addDest();
 
 var submitButton = document.getElementById("bsr-submit-button");
@@ -15,10 +16,15 @@ function getFormInfo(){
 		console.log(names[i].options[names[i].selectedIndex].value);
 		selections.push(names[i].options[names[i].selectedIndex].value);
 	}
+	
+	clearMap();
 	makeDirTable(selections);
 	makeInfoTable(selections);
 }
 
+function clearMarkers() {
+  setMapOnAll(null);
+}
 
 /* Load the google maps window */
 function loadScript(url) {
@@ -58,17 +64,6 @@ function initMap() {
 	});
 }
 
-/*
-function addMarker(xcord, ycord){
-	console.log("entered addMarker");
-	// Update map with markers at locations
-	new google.maps.Marker({
-		position: {lat: ycord, lng: xcord},
-		map,
-	})
-}
-*/
-
 async function addDest(){
 	console.log("adding another selection");
 
@@ -92,21 +87,19 @@ async function addDest(){
 	newSel.setAttribute("class", "form-control");
 
 	// Load options for the new select 
-	//getKeys("GET", null, function(dataJSON){
-		dataJSON = await getKeys("GET", null);
-		console.log("dataJSON" + dataJSON);
-		data = JSON.parse(dataJSON);
-		console.log("data" + data);
-		var newOptText;
-		var newOpt;
-		for(let i = 0; i < data["places"].length; i++) {
-			newOpt = document.createElement('option');
-			newOpt.setAttribute("value", i);
-			newOptText = document.createTextNode(data["places"][i].name);
-			newOpt.appendChild(newOptText);
-			newSel.appendChild(newOpt);
-		}
-	//});
+	dataJSON = await getKeys("GET", null);
+	console.log("dataJSON" + dataJSON);
+	data = JSON.parse(dataJSON);
+	console.log("data" + data);
+	var newOptText;
+	var newOpt;
+	for(let i = 0; i < data["places"].length; i++) {
+		newOpt = document.createElement('option');
+		newOpt.setAttribute("value", i);
+		newOptText = document.createTextNode(data["places"][i].name);
+		newOpt.appendChild(newOptText);
+		newSel.appendChild(newOpt);
+	}
 
 	/* Add the new sel to new div */
 	newDiv.appendChild(newSel);
@@ -165,47 +158,48 @@ async function makeDirTable(selections){
 	
 	var newTbText;
 	for(let i = 0; i < selections.length; i++){
-		//getKeys("GET", selections[i], function(dataJSON){
-			dataJSON = await getKeys("GET", selections[i]);
-			data = JSON.parse(dataJSON);
-			
-			newTr = document.createElement("tr");
-			newTr.setAttribute("class", "accordion-toggle collapsed");
-			
-			// Order
+		dataJSON = await getKeys("GET", selections[i]);
+		data = JSON.parse(dataJSON);
+		
+		newTr = document.createElement("tr");
+		newTr.setAttribute("class", "accordion-toggle collapsed");
+		
+		// Order
+		newTd = document.createElement("td");
+		newTbText = document.createTextNode(i+1);
+		newTd.appendChild(newTbText);
+		newTr.appendChild(newTd);
+
+		// Destination
+		newTd = document.createElement("td");
+		newTbText = document.createTextNode(data["name"]);
+		newTd.appendChild(newTbText);
+		newTr.appendChild(newTd);
+
+		if(i == 0){
+			newTbody.appendChild(newTr);
+			newTab.appendChild(newTbody);
+			newDiv.appendChild(newTab);
+		}
+		else{
+			// TODO: calculate distance and direction from xcord and ycord, then put in table
+			// (rn it just puts xcord in the table)
 			newTd = document.createElement("td");
-			newTbText = document.createTextNode(i+1);
+			newTbText = document.createTextNode(data["xcord"]);
 			newTd.appendChild(newTbText);
 			newTr.appendChild(newTd);
+			
+			// Append table row to table body
+			newTbody.appendChild(newTr);
+			newTab.appendChild(newTbody);
+			newDiv.appendChild(newTab);
+		}
 
-			// Destination
-			newTd = document.createElement("td");
-			newTbText = document.createTextNode(data["name"]);
-			newTd.appendChild(newTbText);
-			newTr.appendChild(newTd);
-
-			if(i == 0){
-				newTbody.appendChild(newTr);
-				newTab.appendChild(newTbody);
-				newDiv.appendChild(newTab);
-			}
-			else{
-				// Xcord
-				newTd = document.createElement("td");
-				newTbText = document.createTextNode(data["xcord"]);
-				newTd.appendChild(newTbText);
-				newTr.appendChild(newTd);
-				
-				// Append table row to table body
-				newTbody.appendChild(newTr);
-				newTab.appendChild(newTbody);
-				newDiv.appendChild(newTab);
-			}
-			new google.maps.Marker({
-				position: {lat: parseFloat(data["ycord"]), lng: parseFloat(data["xcord"])},
-				map: map,
-			});
-		//});
+		var mark = new google.maps.Marker({
+			position: {lat: parseFloat(data["ycord"]), lng: parseFloat(data["xcord"])},
+			map: map,
+		});
+		markerArr.push(mark);
 	}
 
 	/* Create reset button */
@@ -259,7 +253,6 @@ function showForm(){
 	rhsDiv.style.display = (
 	rhsDiv.style.display == "none" ? "block" : "none"
 	);
-	
 }
 
 function makeInfoTable(selections){
