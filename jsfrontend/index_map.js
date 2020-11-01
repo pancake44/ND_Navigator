@@ -17,7 +17,7 @@ function getFormInfo(){
 		selections.push(names[i].options[names[i].selectedIndex].value);
 	}
 	
-	clearMap();
+	clearMarkers();
 	makeDirTable(selections);
 	makeInfoTable(selections);
 }
