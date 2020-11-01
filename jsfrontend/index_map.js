@@ -164,15 +164,11 @@ async function makeDirTable(selections){
 	newTbody = document.createElement("tbody");
 	
 	var newTbText;
-	var callbackArr = [];
 	for(let i = 0; i < selections.length; i++){
 		//getKeys("GET", selections[i], function(dataJSON){
 			dataJSON = await getKeys("GET", selections[i]);
 			data = JSON.parse(dataJSON);
-			console.log("data being pushed: " + data);
-			callbackArr.push(data);
-			console.log("arr i: " + callbackArr[i]);
-			/*
+			
 			newTr = document.createElement("tr");
 			newTr.setAttribute("class", "accordion-toggle collapsed");
 			
@@ -209,11 +205,8 @@ async function makeDirTable(selections){
 				position: {lat: parseFloat(data["ycord"]), lng: parseFloat(data["xcord"])},
 				map: map,
 			});
-			*/
 		//});
 	}
-
-	console.log("arr len: " + callbackArr.length);
 
 	/* Create reset button */
 	newBut = document.createElement("button");
