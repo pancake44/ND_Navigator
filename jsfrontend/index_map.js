@@ -23,7 +23,7 @@ async function getFormInfo(){
 }
 
 function clearMarkers() {
-	return new promise(function(){
+	return new Promise(function(){
   		renderMap();
 	});	
 }
