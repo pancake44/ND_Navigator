@@ -8,7 +8,7 @@ addDest();
 var submitButton = document.getElementById("bsr-submit-button");
 submitButton.onmouseup = getFormInfo;
 
-function getFormInfo(){
+async function getFormInfo(){
 	console.log("getting form info");
 	var names = document.getElementsByName("dest");
 	var selections = [];
@@ -17,13 +17,15 @@ function getFormInfo(){
 		selections.push(names[i].options[names[i].selectedIndex].value);
 	}
 	
-	clearMarkers();
+	await clearMarkers();
 	makeDirTable(selections);
 	makeInfoTable(selections);
 }
 
 function clearMarkers() {
-  renderMap();
+	return new promise({
+  		renderMap();
+	});	
 }
 
 /* Load the google maps window */
