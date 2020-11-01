@@ -183,12 +183,12 @@ function makeDirTable(selections){
 			newTd.appendChild(newTbText);
 			newTr.appendChild(newTd);
 
-			if(i == 0){
+			/*if(i == 0){
 				newTbody.appendChild(newTr);
 				newTab.appendChild(newTbody);
 				newDiv.appendChild(newTab);
 			}
-			else{
+			else{*/
 				// Xcord
 				newTd = document.createElement("td");
 				newTbText = document.createTextNode(data["xcord"]);
@@ -199,7 +199,7 @@ function makeDirTable(selections){
 				newTbody.appendChild(newTr);
 				newTab.appendChild(newTbody);
 				newDiv.appendChild(newTab);
-			}
+			//}
 			//addMarker(parseFloat(data["ycord"]), parseFloat(data["xcord"]));
 			new google.maps.Marker({
 			position: {lat: parseFloat(data["ycord"]), lng: parseFloat(data["xcord"])},
