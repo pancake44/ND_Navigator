@@ -93,7 +93,7 @@ async function addDest(){
 
 	// Load options for the new select 
 	//getKeys("GET", null, function(dataJSON){
-		dataJSON = getKeys("GET", null);
+		dataJSON = await getKeys("GET", null);
 		console.log("dataJSON" + dataJSON);
 		data = JSON.parse(dataJSON);
 		console.log("data" + data);
@@ -167,7 +167,7 @@ async function makeDirTable(selections){
 	var callbackArr = [];
 	for(let i = 0; i < selections.length; i++){
 		//getKeys("GET", selections[i], function(dataJSON){
-			dataJSON = getKeys("GET", selections[i]);
+			dataJSON = await getKeys("GET", selections[i]);
 			data = JSON.parse(dataJSON);
 			console.log("data being pushed: " + data);
 			callbackArr.push(data);
