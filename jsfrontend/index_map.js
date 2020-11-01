@@ -69,7 +69,7 @@ function addMarker(xcord, ycord){
 }
 */
 
-function addDest() {
+async function addDest() {
 	console.log("adding another selection");
 
 	// Create a new form group div
@@ -92,8 +92,8 @@ function addDest() {
 	newSel.setAttribute("class", "form-control");
 
 	// Load options for the new select 
-	getKeys("GET", null, function(dataJSON){
-
+	//getKeys("GET", null, function(dataJSON){
+		const dataJSON = await getKeys("GET", null);
 		console.log("dataJSON" + dataJSON);
 		data = JSON.parse(dataJSON);
 		console.log("data" + data);
@@ -106,7 +106,7 @@ function addDest() {
 			newOpt.appendChild(newOptText);
 			newSel.appendChild(newOpt);
 		}
-	});
+	//});
 
 	/* Add the new sel to new div */
 	newDiv.appendChild(newSel);
@@ -122,7 +122,7 @@ function addDest() {
 	responseDiv.appendChild(newP);
 }
 
-function makeDirTable(selections){
+async function makeDirTable(selections){
 	console.log("entered make dir table");
 
 	/* Create a new div for the table */
@@ -165,8 +165,8 @@ function makeDirTable(selections){
 	
 	var newTbText;
 	for(let i = 0; i < selections.length; i++){
-		getKeys("GET", selections[i], function(dataJSON){
-			
+		//getKeys("GET", selections[i], function(dataJSON){
+			const dataJSON = await getKeys("GET", selections[i])
 			data = JSON.parse(dataJSON);
 			newTr = document.createElement("tr");
 			newTr.setAttribute("class", "accordion-toggle collapsed");
@@ -206,7 +206,7 @@ function makeDirTable(selections){
 			map: map,
 			});
  
-		});
+		//});
 	}
 
 	/* Create reset button */
@@ -300,7 +300,7 @@ function makeInfoTable(selections){
 }
 
 
-function getKeys(REST, KEY, callback){
+function getKeys(REST, KEY/*, callback*/){
 	console.log("entered getKeys")
 	console.log("REST: " + REST);
 	
@@ -324,7 +324,8 @@ function getKeys(REST, KEY, callback){
 
 	xhr.onload = function(e) {
 		console.log("responseText" + xhr.responseText);
-		callback(xhr.responseText);
+		//callback(xhr.responseText);
+		return xhr.responseText;
 	}
 	
 	xhr.onerror = function(e){
