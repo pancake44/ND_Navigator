@@ -162,94 +162,53 @@ function makeDirTable(selections){
 
 	newTbody = document.createElement("tbody");
 	
-	var callbackArr = [];
+	var newTbText;
+	var bool = true;
 	for(let i = 0; i < selections.length; i++){
-		getKeys("GET", selections[i], function(dataJSON){
-			//data = JSON.parse(dataJSON);
-			callbackArr.push(dataJSON);
-			/*
-			newTr = document.createElement("tr");
-			newTr.setAttribute("class", "accordion-toggle collapsed");
-			
-			// Order
-			newTd = document.createElement("td");
-			newTbText = document.createTextNode(i+1);
-			newTd.appendChild(newTbText);
-			newTr.appendChild(newTd);
-
-			// Destination
-			newTd = document.createElement("td");
-			newTbText = document.createTextNode(data["name"]);
-			newTd.appendChild(newTbText);
-			newTr.appendChild(newTd);
-
-			if(i == 0){
-				newTbody.appendChild(newTr);
-				newTab.appendChild(newTbody);
-				newDiv.appendChild(newTab);
-			}
-			else{
-				// Xcord
+		if(bool == true){
+			getKeys("GET", selections[i], function(dataJSON){
+				bool = false;
+				data = JSON.parse(dataJSON);
+				
+				newTr = document.createElement("tr");
+				newTr.setAttribute("class", "accordion-toggle collapsed");
+				
+				// Order
 				newTd = document.createElement("td");
-				newTbText = document.createTextNode(data["xcord"]);
+				newTbText = document.createTextNode(i+1);
 				newTd.appendChild(newTbText);
 				newTr.appendChild(newTd);
-				
-				// Append table row to table body
-				newTbody.appendChild(newTr);
-				newTab.appendChild(newTbody);
-				newDiv.appendChild(newTab);
-			//}
-			//addMarker(parseFloat(data["ycord"]), parseFloat(data["xcord"]));
-			new google.maps.Marker({
-			position: {lat: parseFloat(data["ycord"]), lng: parseFloat(data["xcord"])},
-			map: map,
+
+				// Destination
+				newTd = document.createElement("td");
+				newTbText = document.createTextNode(data["name"]);
+				newTd.appendChild(newTbText);
+				newTr.appendChild(newTd);
+
+				if(i == 0){
+					newTbody.appendChild(newTr);
+					newTab.appendChild(newTbody);
+					newDiv.appendChild(newTab);
+				}
+				else{
+					// Xcord
+					newTd = document.createElement("td");
+					newTbText = document.createTextNode(data["xcord"]);
+					newTd.appendChild(newTbText);
+					newTr.appendChild(newTd);
+					
+					// Append table row to table body
+					newTbody.appendChild(newTr);
+					newTab.appendChild(newTbody);
+					newDiv.appendChild(newTab);
+				}
+				new google.maps.Marker({
+					position: {lat: parseFloat(data["ycord"]), lng: parseFloat(data["xcord"])},
+					map: map,
+				});
+				bool = true;
 			});
-			*/
-		});
-	}
-
-	console.log("cbalen" + callbackArr.length);
-	var newTbText;
-	for(let i = 0; i < callbackArr.length; i++){
-		data = JSON.parse(callbackArr[i]);
-		console.log("the data: " + data);
-		newTr = document.createElement("tr");
-		newTr.setAttribute("class", "accordion-toggle collapsed");
-		
-		// Order
-		newTd = document.createElement("td");
-		newTbText = document.createTextNode(i+1);
-		newTd.appendChild(newTbText);
-		newTr.appendChild(newTd);
-
-		// Destination
-		newTd = document.createElement("td");
-		newTbText = document.createTextNode(data["name"]);
-		newTd.appendChild(newTbText);
-		newTr.appendChild(newTd);
-
-		if(i == 0){
-			newTbody.appendChild(newTr);
-			newTab.appendChild(newTbody);
-			newDiv.appendChild(newTab);
 		}
-		else{
-			// Xcord
-			newTd = document.createElement("td");
-			newTbText = document.createTextNode(data["xcord"]);
-			newTd.appendChild(newTbText);
-			newTr.appendChild(newTd);
-			
-			// Append table row to table body
-			newTbody.appendChild(newTr);
-			newTab.appendChild(newTbody);
-			newDiv.appendChild(newTab);
-		}
-		new google.maps.Marker({
-			position: {lat: parseFloat(data["ycord"]), lng: parseFloat(data["xcord"])},
-			map: map,
-		});
 	}
 
 	/* Create reset button */
