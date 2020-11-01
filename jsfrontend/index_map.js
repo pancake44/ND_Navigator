@@ -163,53 +163,55 @@ function makeDirTable(selections){
 	newTbody = document.createElement("tbody");
 	
 	var newTbText;
-	var bool = true;
+	var callbackArr = [];
 	for(let i = 0; i < selections.length; i++){
-		if(bool == true){
-			bool = false;
-			getKeys("GET", selections[i], function(dataJSON){
-				data = JSON.parse(dataJSON);
-				
-				newTr = document.createElement("tr");
-				newTr.setAttribute("class", "accordion-toggle collapsed");
-				
-				// Order
+		getKeys("GET", selections[i], function(dataJSON){
+			data = JSON.parse(dataJSON);
+			console.log("data being pushed: " + data);
+			callbackArr.push(data);
+			console.log("arr i: " + callbackArr[i]);
+			/*
+			newTr = document.createElement("tr");
+			newTr.setAttribute("class", "accordion-toggle collapsed");
+			
+			// Order
+			newTd = document.createElement("td");
+			newTbText = document.createTextNode(i+1);
+			newTd.appendChild(newTbText);
+			newTr.appendChild(newTd);
+
+			// Destination
+			newTd = document.createElement("td");
+			newTbText = document.createTextNode(data["name"]);
+			newTd.appendChild(newTbText);
+			newTr.appendChild(newTd);
+
+			if(i == 0){
+				newTbody.appendChild(newTr);
+				newTab.appendChild(newTbody);
+				newDiv.appendChild(newTab);
+			}
+			else{
+				// Xcord
 				newTd = document.createElement("td");
-				newTbText = document.createTextNode(i+1);
+				newTbText = document.createTextNode(data["xcord"]);
 				newTd.appendChild(newTbText);
 				newTr.appendChild(newTd);
-
-				// Destination
-				newTd = document.createElement("td");
-				newTbText = document.createTextNode(data["name"]);
-				newTd.appendChild(newTbText);
-				newTr.appendChild(newTd);
-
-				if(i == 0){
-					newTbody.appendChild(newTr);
-					newTab.appendChild(newTbody);
-					newDiv.appendChild(newTab);
-				}
-				else{
-					// Xcord
-					newTd = document.createElement("td");
-					newTbText = document.createTextNode(data["xcord"]);
-					newTd.appendChild(newTbText);
-					newTr.appendChild(newTd);
-					
-					// Append table row to table body
-					newTbody.appendChild(newTr);
-					newTab.appendChild(newTbody);
-					newDiv.appendChild(newTab);
-				}
-				new google.maps.Marker({
-					position: {lat: parseFloat(data["ycord"]), lng: parseFloat(data["xcord"])},
-					map: map,
-				});
+				
+				// Append table row to table body
+				newTbody.appendChild(newTr);
+				newTab.appendChild(newTbody);
+				newDiv.appendChild(newTab);
+			}
+			new google.maps.Marker({
+				position: {lat: parseFloat(data["ycord"]), lng: parseFloat(data["xcord"])},
+				map: map,
 			});
-			bool = true;
-		}
+			*/
+		});
 	}
+
+	console.log("arr len: " + callbackArr.length);
 
 	/* Create reset button */
 	newBut = document.createElement("button");
