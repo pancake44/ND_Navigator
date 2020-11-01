@@ -23,7 +23,7 @@ function getFormInfo(){
 }
 
 function clearMarkers() {
-  setMapOnAll(null);
+  renderMap();
 }
 
 /* Load the google maps window */
