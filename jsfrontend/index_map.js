@@ -121,7 +121,7 @@ async function addDest() {
 	responseDiv.appendChild(newP);
 }
 
-async function makeDirTable(selections){
+function makeDirTable(selections){
 	console.log("entered make dir table");
 
 	/* Create a new div for the table */
@@ -209,6 +209,7 @@ async function makeDirTable(selections){
 		});
 	}
 
+	console.log("cbalen" + callbackArr.length);
 	var newTbText;
 	for(let i = 0; i < callbackArr.length; i++){
 		data = JSON.parse(callbackArr[i]);
