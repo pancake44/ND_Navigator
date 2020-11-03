@@ -18,7 +18,7 @@ function getFormInfo(){
 	}
 	
 	makeDirTable(selections);
-	makeInfoTable(selections);
+	// makeInfoTable(selections);
 }
 
 /* Load the google maps window */
