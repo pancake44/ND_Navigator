@@ -152,6 +152,10 @@ async function makeDirTable(selections){
 	newTbody = document.createElement("tbody");
 	
 	var newTbText;
+	var oldxcord;
+	var oldycord;
+	var newxcord;
+	var newycord;
 	for(let i = 0; i < selections.length; i++){
 		dataJSON = await getKeys("GET", selections[i]);
 		data = JSON.parse(dataJSON);
@@ -175,12 +179,22 @@ async function makeDirTable(selections){
 			newTbody.appendChild(newTr);
 			newTab.appendChild(newTbody);
 			newDiv.appendChild(newTab);
+			// used for calculating distance and direction
+			oldxcord = data["xcord"];
+			oldycord = data["ycord"];
 		}
 		else{
-			// TODO: calculate distance and direction from xcord and ycord, then put in table
-			// (rn it just puts xcord in the table)
+			// calculate distance and direction from xcord and ycord, then put in table
+			newxcord = data["xcord"];
+			newycord = data["ycord"];
+			
+			console.log("Distance coords: " + oldxcord + " " + oldycord + " " + newxcord + " " + newycord);
+			console.log("Distance: " + getDistance(oldxcord, oldycord, newxcord, newycord));
+			console.log("Bearing: " + getBearing(oldxcord, oldycord, newxcord, newycord));
+			
 			newTd = document.createElement("td");
-			newTbText = document.createTextNode(data["xcord"]);
+			// put distance and direction into table entry
+			newTbText = document.createTextNode(getDistance(oldxcord, oldycord, newxcord, newycord).toFixed(0) + " m   " + getCardinal(getBearing(oldxcord, oldycord, newxcord, newycord)));
 			newTd.appendChild(newTbText);
 			newTr.appendChild(newTd);
 			
@@ -188,6 +202,10 @@ async function makeDirTable(selections){
 			newTbody.appendChild(newTr);
 			newTab.appendChild(newTbody);
 			newDiv.appendChild(newTab);
+
+			// preserve coordinates for next point
+			oldxcord = data["xcord"];
+			oldycord = data["ycord"];
 		}
 
 		var mark = new google.maps.Marker({
@@ -349,6 +367,44 @@ function networkCall(reqInfo){
 }
 */
 
+// simple math functions for distance and direction
+// ripped from http://www.movable-type.co.uk/scripts/latlong.html
+const R = 6371e3; // radius of Earth, metres
 
+// takes latlong coords and returns distance in meters (Haversine formula)
+function getDistance(lon1, lat1, lon2, lat2){
+	var φ1 = lat1 * Math.PI/180;
+	var φ2 = lat2 * Math.PI/180;
+	var Δλ = (lon2-lon1) * Math.PI/180
+	return Math.acos( Math.sin(φ1)*Math.sin(φ2) + Math.cos(φ1)*Math.cos(φ2) * Math.cos(Δλ) ) * R;
+}
+
+// takes latlong coords and returns bearing in degrees
+function getBearing(lon1, lat1, lon2, lat2){
+	var φ1 = lat1 * Math.PI/180;
+	var φ2 = lat2 * Math.PI/180;
+	var Δλ = (lon2-lon1) * Math.PI/180;
+	var y = Math.sin(Δλ) * Math.cos(φ2);
+	var x = Math.cos(φ1)*Math.sin(φ2) - Math.sin(φ1)*Math.cos(φ2)*Math.cos(Δλ);
+	var θ = Math.atan2(y, x);
+	return (θ*180/Math.PI + 360) % 360;
+}
+
+// convers bearing to cardinal direction
+// ripped from https://gist.github.com/basarat/4670200 - not going to reinvent the wheel
+const degreePerDirection = 360 / 8;
+
+function getCardinal(bearing){
+	var offsetAngle = bearing + degreePerDirection / 2;
+
+  	return (offsetAngle >= 0 * degreePerDirection && offsetAngle < 1 * degreePerDirection) ? "N"
+		: (offsetAngle >= 1 * degreePerDirection && offsetAngle < 2 * degreePerDirection) ? "NE"
+		: (offsetAngle >= 2 * degreePerDirection && offsetAngle < 3 * degreePerDirection) ? "E"
+		: (offsetAngle >= 3 * degreePerDirection && offsetAngle < 4 * degreePerDirection) ? "SE"
+		: (offsetAngle >= 4 * degreePerDirection && offsetAngle < 5 * degreePerDirection) ? "S"
+		: (offsetAngle >= 5 * degreePerDirection && offsetAngle < 6 * degreePerDirection) ? "SW"
+		: (offsetAngle >= 6 * degreePerDirection && offsetAngle < 7 * degreePerDirection) ? "W"
+		: "NW";
+}
 
 
