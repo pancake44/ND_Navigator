@@ -71,7 +71,11 @@ async function addDest(){
 	newLab = document.createElement("label");
 	newLab.setAttribute("for", "dest" + destCount);
 	newLab.setAttribute("id", "dest" + destCount);
-	var newLabText = document.createTextNode("Destination " + destCount);
+	var newLabText;
+	if(destCount == 1)
+		newLabText = document.createTextNode("Starting location ");
+	else
+		newLabText = document.createTextNode("Destination " + destCount);
 	newLab.appendChild(newLabText);
 	newDiv.appendChild(newLab);
 
