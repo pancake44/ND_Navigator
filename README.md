@@ -43,8 +43,10 @@
    + Before going to the website, ensure that the server is running on student04.cse.nd.edu
    + Visit the [website](http://hsnow567.gitlab.io/paradigms-fa20-web_startup/jsfrontend/index_map.html) to interact with the client
  + Interaction
-   + In the first dropdown, select starting location
-   + Press "Add" to add a destination. Any number of destinations can be added.
-   + Press "Submit", and the chosen locations will appear on the map, and table of directions will appear
-   + The "Directions" column gives the distance and direction necessary to reach the location from the previous location
-   + Additional functionalities are planned
+   1. In the first dropdown, select starting location
+   2. Press "Add" to add a destination. Any number of destinations can be added.
+   3. Press "Submit", and the chosen locations will appear on the map, and table of directions will appear
+   4. The "Directions" column gives the distance and direction necessary to reach the location from the previous location
+   5. Press "Return to form" to edit chosen locations
+    
+Additional functionalities are planned
