@@ -1,0 +1,40 @@
+caption {
+  position: absolute;
+  background-color: rgba(0, 134, 200, 0.7);
+  border-radius: 30px;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+body {
+  color: white;
+  font-family: "Libre Franklin", sans-serif;
+  background-color: rgb(12, 35, 64);
+}
+
+h1{
+  font-family: "Libre Franklin", sans-serif;
+  font-weight: bold;
+}
+
+#f{
+  padding-bottom: 40px;
+}
+
+#buttonBottom{
+  padding-bottom: 40px;
+}
+
+footer{
+  position: relative;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(174,145,66);
+}
+
+#map {
+  height: 80vh;
+}
+

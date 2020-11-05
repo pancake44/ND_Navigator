@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ND Navigator</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Toggle navigation</span
+            ><span class="icon-bar"></span><span class="icon-bar"></span
+            ><span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"
+            >Gerry (gfernan2) & Harry's (hsnow) Webpages</a
+          >
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://youtu.be/dQw4w9WgXcQ">About Us</a></li>
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Learn More<span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="https://www.imdb.com/title/tt0302674">Gerry</a>
+                </li>
+                <li><a href="https://www.harrys.com/en/us">Harry</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-7">
+          <h1>Notre Dame</h1>
+          <br />
+          <div id="map"></div>
+          <p id="f"></p>
+        </div>
+        <div class="col-md-5">
+          <h1>Find your destination</h1>
+          <br />
+          <div id="tab"></div>
+          <div id="rhs">
+            <form class="bsr-form" action="" id="theForm">
+              <p id="here1"></p>
+              <button
+                type="button"
+                class="btn btn-default"
+                id="addButton"
+                onclick="addDest()"
+              >
+                Add
+              </button>
+               <button
+                type="reset"
+                class="btn btn-default"
+                id="resButton"
+                onclick="clearAll()"
+              >
+                Reset
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="bsr-submit-button"
+              >
+                Submit
+              </button>
+            </form>
+			<p id="answer-label"></p>
+            <p id="buttonBottom"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12" id="dtable" style="display:none;">
+          <div class="table">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Most Recent Review</th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <hr />
+        <p class="text-muted">Map from google.api</p>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript"> function clearAll() { location.reload(); } </script>
+    <script src="index_map.js"></script>
+  </body>
+</html>
+
