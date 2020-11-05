@@ -36,4 +36,15 @@
  + Usage Details
    + Our server intends to be used as a private backend for our frontend client, so users should not interact with the server directly (which might require some form of CORS implementation)
    + Our frontend client would facilitate the proper requests to this webservice, such as GETing place information (like during an initial page load, or retrieving coordinates for path calculations on the clientside), PUTing information (such as when a user wants to submit a review), and POSTing when needed (such as when a user wants to add a location).
-   + Currently we are using the port assigned to Harry, so port 51040. The server runs on localhost.
+   + Currently we are using the port assigned to Harry, so port 51040. The server runs on student04.cse.nd.edu.
+
+## User Interaction
+ + Preparation
+   + Before going to the website, ensure that the server is running on student04.cse.nd.edu
+   + Visit the [website](hsnow567.gitlab.io/paradigms-fa20-web_startup/jsfrontend/index_map.html) to interact with the client
+ + Interaction
+   + In the first dropdown, select starting location
+   + Press "Add" to add a destination. Any number of destinations can be added.
+   + Press "Submit", and the chosen locations will appear on the map, and table of directions will appear
+   + The "Directions" column gives the distance and direction necessary to reach the location from the previous location
+   + Additional functionalities are planned
