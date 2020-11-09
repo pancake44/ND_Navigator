@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ND Navigator</title>
+	 <script src="jquery-3.5.1.min.js"></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -69,7 +71,7 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid">
+    <div class="container-fluid" id="topDiv">
       <div class="row">
         <div class="col-md-7">
           <h1>Notre Dame</h1>
@@ -116,12 +118,12 @@
 
       <div class="row">
         <div class="col-md-12" id="dtable" style="display:none;">
-          <div class="table">
-            <table class="table table-bordered">
+          <div class="table-responseive">
+            <table class="table" id="tabled" style="table-layout:fixed;">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Location</th>
+                  <th scope="col" style="width: 5%;">#</th>
+                  <th scope="col" style="width: 20%;">Location</th>
                   <th scope="col">Description</th>
                   <th scope="col">Most Recent Review</th>
                 </tr>
@@ -133,6 +135,76 @@
         </div>
       </div>
     </div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+   <span class="close">&times;</span>
+
+  	<div class="container">
+
+     	<div class="col-md-6">
+
+	<div class="form-group" id="reviewForm2">
+			<form class="form-horizontal" id="thisForm" onsubmit="addReview()">
+				<fieldset>
+
+				<!-- Form Name -->
+				<legend>Recent Reviews</legend>
+				<div id="wrapper">	
+				<div class="form-group">
+					 <div class="col-md-11" id="reviewtab">                 
+						<textarea class="form-control" id="reviewtag1" readonly></textarea>
+					</div>
+				</div>
+				</div>
+				</fieldset>
+			</form>
+		</div>
+
+		</div>
+
+	  	<div class="col-md-6">
+		<div class="form-group" id="reviewForm">
+			<form class="form-horizontal" onsubmit="addReview()">
+				<fieldset>
+
+				<!-- Form Name -->
+				<legend>Submit a review</legend>
+
+				<!-- Textarea -->
+				<div class="form-group">
+					<label class="col-md-11 control-label" for="textarea">Text Area</label>
+					 <div class="col-md-11">                 
+						   <textarea class="form-control" id="textarea" name="textarea"></textarea>
+					 </div>
+				</div>
+
+				<div class="form-group">
+					  <label class="col-md-11 control-label" for="bsr-submit-button"></label>
+					  <div class="col-md-11">
+						 <button
+            		    type="button"
+            		    class="btn btn-primary"
+            		    id="bsr-submit-button"
+            			 onclick="addReview()" >
+            		    Submit
+            			  </button>
+					  </div>
+				</div>
+				</fieldset>
+			</form>
+		</div>
+		</div>
+
+
+    <p>Some text in the Modal..</p>
+	</div>
+  </div>
+
+</div>
 
     <footer>
       <div class="container">
@@ -147,7 +219,14 @@
       crossorigin="anonymous"
     ></script>
     <script type="text/javascript"> function clearAll() { location.reload(); } </script>
-    <script src="index_map.js"></script>
+    <script type="text/javascript">
+	$(document).ready(function() {
+ 	 $(".modal").on("hidden.bs.modal", function() {
+	    $(".textarea").html("Where did he go?!?!?!");
+	  });
+	});
+	</script>
+	<script src="index_map.js"></script>
   </body>
 </html>
 
