@@ -51,6 +51,25 @@ function setMapAll(){
 }
 
 
+/*** NAVBAR FUNCTIONS ***/
+
+function showLinks(){
+	document.getElementById("linksL").classList.toggle("show");
+}
+
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
 /*** FORM AND DIRECTION TABLE FUNCTIONS ***/
 
 /* On submission of form, put the selections into a global array and
@@ -227,9 +246,12 @@ async function makeDirTable(){
 		}
 
 		// Make a marker object and add to array
+		var lab = (i+1).toString();
 		var mark = new google.maps.Marker({
 			position: {lat: parseFloat(data["ycord"]), lng: parseFloat(data["xcord"])},
+			label: lab,
 		});
+
 		markerArr.push(mark);
 	}
 
