@@ -53,8 +53,8 @@ function setMapAll(){
 
 /*** NAVBAR FUNCTIONS ***/
 
-function showLinks(){
-	document.getElementById("linksL").classList.toggle("show");
+function showLinks(i){
+	document.getElementById("dropdown-content" + i).classList.toggle("show");
 }
 
 window.onclick = function(event) {
