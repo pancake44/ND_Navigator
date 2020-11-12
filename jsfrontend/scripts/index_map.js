@@ -58,6 +58,7 @@ function showLinks(i){
 }
 
 function addPlace(){
+	window.location.href = "suggest.html";
 }
 
 window.onclick = function(event) {

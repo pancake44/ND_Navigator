@@ -19,6 +19,13 @@ h1{
   font-weight: bold;
 }
 
+.link
+{
+   color:aqua;
+   text-decoration: none; 
+   background-color: none;
+}
+
 #tbar{
 	position: relative;
 	top: 0;
@@ -97,11 +104,11 @@ position: absolute;
 }
 
 #dropdown-content1{
-	right: 14.4%;
+	right: 15.4%;
 }
 
 #dropdown-content3{
-  right: 0.8%;
+  right: 1.8%;
 }
 
 .dropdown-content a {
@@ -123,8 +130,10 @@ position: absolute;
 
 footer{
   position: relative;
-  bottom: 0;
-  left: 0;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+      margin-bottom: 0px;
   background-color: rgb(174,145,66);
 }
 
