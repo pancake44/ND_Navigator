@@ -57,6 +57,9 @@ function showLinks(i){
 	document.getElementById("dropdown-content" + i).classList.toggle("show");
 }
 
+function addPlace(){
+}
+
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -75,7 +78,7 @@ window.onclick = function(event) {
 /* On submission of form, put the selections into a global array and
    construct two tables */
 function getFormInfo(){
-	console.log("getting form info");
+	console.log("entered getFormInfo");
 
 	selections = []; // Clear array from previous form sumbissions
 	var names = document.getElementsByName("dest");
@@ -91,7 +94,10 @@ function getFormInfo(){
 
 /* Add a nother dropdown selection to the form */
 async function addDest(){
-	console.log("adding another selection");
+	console.log("entered addDest");
+
+	if(destCount > 10)
+		return;
 
 	// Create a new form group div
 	newDiv = document.createElement("div");

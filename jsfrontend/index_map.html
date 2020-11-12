@@ -27,17 +27,24 @@
   </head>
 
   <body>
-  	<div class="container-fluid" id="tbar"> </div> 
+	<div class="container-fluid" id="tbar"> </div> 
 	<div class="container-fluid" id="top">
 		<div class="col-md-12">
-			
-		  <button onclick="showLinks('1')" class="dropbtn" id="dropbtn1">Links</button>
-			<div id="dropdown-content1" class="dropdown-content">
+			<h1 id="ndnav">ND Navigator</h1>
+			<h4 id="names">Gerry F. and Harry S.</h4>
+			<button onclick="showLinks('1')" class="dropbtn" id="dropbtn1" style="font-weight:bold;">About</button>
+			<div id="dropdown-content1" class="dropdown-content" id="dropdown-content1">
+				<a href="https://www.imdb.com/title/tt0302674/">Gerry</a>
+				<a href="https://www.harrys.com/en/us">Harry</a>
+				<a href="https://youtu.be/dQw4w9WgXcQ">Mission, Vision, and Values</a>
+			</div>
+			<button onclick="addPlace()" class="dropbtn" id="dropbtn2">Suggest</button>
+		  	<button onclick="showLinks('3')" class="dropbtn" id="dropbtn3">Links</button>
+			<div id="dropdown-content3" class="dropdown-content" id="dropdown-content3">
 				<a href="https://www.nd.edu/">ND</a>
 				<a href="https://www.google.com/maps">Google Maps</a>
 				<a href="https://www3.nd.edu/~skumar5/teaching/2020-fall-pp.html">Paradigms</a>
-			</div>
-			
+			</div>	
 		</div>
 	</div>
       
@@ -98,65 +105,50 @@
         </div>
       </div>
     </div>
-
-
 				<div id="myModal" class="modal">
-								<div class="modal-content">
-								<span class="close">&times;</span>
-												<div class="container">
-																<div class="col-md-6">
-																				<div class="form-group" id="reviewForm2">
-																				<form class="form-horizontal" id="thisForm" onsubmit="addReview()">
-																				<fieldset>
-																								<legend>Recent Reviews</legend>
-																								<div id="wrapper">	
-																												<div class="form-group">
-																																<div class="col-md-11" id="reviewtab">                 
-																																				<textarea class="form-control" id="reviewtag1" readonly></textarea>
-																																</div>
-																											</div>
-																								</div>
-																				</fieldset>
-																				</form>
-																				</div>
-																</div>
-																<div class="col-md-6">
-		<div class="form-group" id="reviewForm">
-			<form class="form-horizontal" onsubmit="addReview()">
-				<fieldset>
-
-	
-				<legend>Submit a review</legend>
-
-			
-				<div class="form-group">
-					<label class="col-md-11 control-label" for="textarea"></label>
-					 <div class="col-md-11">                 
-							 <textarea class="form-control" id="textarea" name="textarea"></textarea>
-					 </div>
-				</div>
-
-				<div class="form-group">
-						<label class="col-md-11 control-label" for="bsr-submit-button"></label>
-						<div class="col-md-11">
-						 <button
-										type="button"
-										class="btn btn-primary"
-										id="bsr-submit-button"
-									 onclick="addReview()" >
-										Submit
-										</button>
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<div class="container">
+							<div class="col-md-6">
+								<div class="form-group" id="reviewForm2">
+									<form class="form-horizontal" id="thisForm" onsubmit="addReview()">
+										<fieldset>
+											<legend class="legend" style="width: 80%;">Recent Reviews</legend>
+											<div id="wrapper">	
+												<div class="form-group">
+													<div class="col-md-11" id="reviewtab">                 
+														<textarea class="form-control" id="reviewtag1" readonly style="width: 80%;"></textarea>
+													</div>
+												</div>
+											</div>
+										</fieldset>
+									</form>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group" id="reviewForm">
+									<form class="form-horizontal" onsubmit="addReview()">
+										<fieldset>
+											<legend class="legend" style="width: 80%;">Submit a review</legend>
+											<div class="form-group">
+												<label class="col-md-11 control-label" for="textarea"></label>
+												<div class="col-md-11">                 
+							 						<textarea class="form-control" id="textarea" name="textarea" style="width: 80%;"></textarea>
+					 							</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-11 control-label" for="bsr-submit-button"></label>
+												<div class="col-md-11">
+						 							<button type="button" class="btn btn-primary" id="bsr-submit-button" onclick="addReview()">Submit</button>
+												</div>
+											</div>
+										</fieldset>
+									</form>
+								</div>
+							</div>
 						</div>
+  					</div>
 				</div>
-				</fieldset>
-			</form>
-		</div>
-		</div>
-	</div>
-  </div>
-
-</div>
-
     <footer>
       <div class="container-fluid">
         <hr />
