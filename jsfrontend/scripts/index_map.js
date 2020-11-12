@@ -398,13 +398,6 @@ function review(){
 
 	var modal = document.getElementById("myModal");
 	var btn = document.getElementById("myBtn");
-	var span = document.getElementsByClassName("close")[0];
-
-	// Clear and close modal
-	span.onclick = function() {
-		clearReview();
- 		modal.style.display = "none";
-	}
 
 	// Clear and close modal
 	window.onclick = function(event) {
@@ -433,21 +426,28 @@ async function popReview(){
 
 	// Add first review to prexisting tag
 	responseDiv = document.getElementById("reviewtag1");
-	responseDiv.innerHTML = data["reviews"][0];
+	responseDiv.innerHTML = data["reviews"][data["reviews"].length - 1];
+	responseDiv.setAttribute("style", "resize: none; border: none;");
+
+	var j = data["reviews"].length;
+	var stop = 0;
+	if(j > 10)
+		stop = data["reviews"].length - 10;
 
 	// Generate new tags and add subsequent reviews
-	for(let j = 1; j < data["reviews"].length; j++){
+	for(j = data["reviews"].length - 2; j >= stop; j--){
 		
 		newDivF = document.createElement("div");
 		newDivF.setAttribute("class", "form-group");
 
 		newDivC = document.createElement("div");
-		newDivC.setAttribute("class", "col-md-11");
+		newDivC.setAttribute("class", "col-md-12");
 
 		newTA = document.createElement("textarea");
 		newTA.setAttribute("id", "reviewtag" + (j+2));
 		newTA.setAttribute("class", "form-control");
 		newTA.setAttribute("readonly", true);
+		newTA.setAttribute("style", "resize: none; border: none;");
 		newTA.innerHTML = data["reviews"][j];
 		
 		newDivC.appendChild(newTA);

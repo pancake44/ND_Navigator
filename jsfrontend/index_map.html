@@ -111,17 +111,16 @@
     </div>
 				<div id="myModal" class="modal">
 					<div class="modal-content">
-						<span class="close">&times;</span>
-						<div class="container">
+						<div class="container-fluid">
 							<div class="col-md-6">
 								<div class="form-group" id="reviewForm2">
-									<form class="form-horizontal" id="thisForm" onsubmit="addReview()">
+									<form class="form-horizontal" id="thisForm">
 										<fieldset>
-											<legend class="legend" style="width: 80%;">Recent Reviews</legend>
+											<legend class="legend">Recent Reviews</legend>
 											<div id="wrapper">	
 												<div class="form-group">
-													<div class="col-md-11" id="reviewtab">                 
-														<textarea class="form-control" id="reviewtag1" readonly style="width: 80%;"></textarea>
+													<div class="col-md-12" id="reviewtab">                 
+														<textarea class="form-control" id="reviewtag1" readonly></textarea>
 													</div>
 												</div>
 											</div>
@@ -133,16 +132,14 @@
 								<div class="form-group" id="reviewForm">
 									<form class="form-horizontal" onsubmit="addReview()">
 										<fieldset>
-											<legend class="legend" style="width: 80%;">Submit a review</legend>
+											<legend class="legend">Submit a review</legend>
 											<div class="form-group">
-												<label class="col-md-11 control-label" for="textarea"></label>
-												<div class="col-md-11">                 
-							 						<textarea class="form-control" id="textarea" name="textarea" style="width: 80%;"></textarea>
+												<div class="col-md-12">                 
+							 						<textarea class="form-control" id="textarea" name="textarea" style="resize: vertical;"></textarea>
 					 							</div>
 											</div>
 											<div class="form-group">
-												<label class="col-md-11 control-label" for="bsr-submit-button"></label>
-												<div class="col-md-11">
+												<div class="col-md-12">
 						 							<button type="button" class="btn btn-primary" id="bsr-submit-button" onclick="addReview()">Submit</button>
 												</div>
 											</div>
