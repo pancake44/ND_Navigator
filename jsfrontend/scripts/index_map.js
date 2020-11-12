@@ -1,11 +1,18 @@
 console.log("load page");
 
+// The map
 var map;
+// Render the map on page load
 this.renderMap();
+// Only one location selected by default
 var destCount = 1;
+// Array to store markers for map
 var markerArr = [];
+// Array to choose destination choices
 var selections = [];
+// Add the first dropdown to page on load
 addDest();
+// Keeps track of item bein examined in info table`
 var currentItem;
 
 var submitButton = document.getElementById("bsr-submit-button");
@@ -398,8 +405,14 @@ function review(){
 
 	var modal = document.getElementById("myModal");
 	var btn = document.getElementById("myBtn");
+	var span = document.getElementsByClassName("close")[0];
 
 	// Clear and close modal
+	span.onclick = function() {
+  		clearReview();
+		modal.style.display = "none";
+	}	
+
 	window.onclick = function(event) {
 		if (event.target == modal) {
 			clearReview();
@@ -481,20 +494,23 @@ function clearReview(){
 	if(document.getElementById("wrapper")){
 		console.log("clearing review");
 
+		// Clear all reviews
 		tabDiv = document.getElementById("wrapper");
 		tabDiv.innerHTML = "";
 	
+		// Recreate the default tag
 		fg = document.createElement("div");
 		fg.setAttribute("class", "form-group");
 
 		cmd = document.createElement("div");
-		cmd.setAttribute("class", "col-md-11");
+		cmd.setAttribute("class", "col-md-12");
 		cmd.setAttribute("id", "reviewtab");
 
 		reviewTag = document.createElement("textarea");
 		reviewTag.setAttribute("class", "form-control");
 		reviewTag.setAttribute("id", "reviewtag1");
 		reviewTag.setAttribute("readonly", true);
+		reviewTag.setAttribute("style", "resize: none; border: none;");
 
 		cmd.appendChild(reviewTag);
 		fg.appendChild(cmd);
@@ -505,6 +521,7 @@ function clearReview(){
 
 /*** NETWORK FUNCTIONS ***/
 
+//Make a PUT call
 function putKeys(REST, KEY, mBODY){
 	console.log("entered putKeys");
 
@@ -545,6 +562,7 @@ function putKeys(REST, KEY, mBODY){
 	});
 }
 
+// Make a GET call (function has KEYS in the name, but can also do INDEX)
 function getKeys(REST, KEY){
 	return new Promise(function (resolve, reject) {
 		console.log("entered getKeys");
