@@ -42,9 +42,37 @@
  + Preparation
    + Before going to the website, ensure that the server is running on student04.cse.nd.edu
    + Visit the [website](http://hsnow567.gitlab.io/paradigms-fa20-web_startup/jsfrontend/index_map.html) to interact with the client
- + Interaction
+ + Main Page Interaction
    + In the first dropdown, select starting location
-   + Press "Add" to add a destination. Any number of destinations can be added.
+   + Press "Add" to add a destination. Up to 9 destinations can be added.
    + Press "Submit", and the chosen locations will appear on the map, and table of directions will appear
    + The "Directions" column gives the distance and direction necessary to reach the location from the previous location
-   + Additional functionalities are planned
+   + After submitting, below the map will appear an "Info Table"
+   + After clicking a row of the "Info Table", a pop-up will appear which allows the user to enter a review for the given location.
+   + To submit a review, fill in the text box and click "submit" to submit the review
+   + To add a new location to the website, click "Suggest" on the top navbar
+ + Suggest Page Interaction
+   + Fill out the necessary information
+   + Click "Submit" to add location to website
+
+## Complexity
+ + Data source contains 582 entries, each containing information about a place on/around Notre Dame campus.
+   + Each entry contains lots of information, but only crucial information such as name, lat/long coordinates, and description are included in the backend
+ + Client utilizes Google Maps API
+ + Heavy use of dynamic elements
+   + Dynamic dropdown elements which are appended to the page
+   + Dynamic direction table to the right of the map
+   + Dynamic information table below the map, with each row being clickable
+     + Clicking a row creates a dynamically-build pop-up for entering a review and seeing past reviews of the place
+   + Dynamic hiding/showing between the destination dropdowns and direction tables
+   + Various dynamically-created buttons
+ + Basic CSS styling (fonts, colors)
+
+## Presentation
+ + Link to demonstration video: [Demonstration Video]
+ + Link to code walkthrough video: [Code Walkthrough Video]
+ + Link to presentation slides: [Google Slides]
+
+[Demonstration Video]: https://drive.google.com/file/d/1CCY8_cu68uU2gYtqabO5U7idbL2ey431/view?usp=sharing
+[Code Walkthrough Video]: https://drive.google.com/file/d/1c9r2KKI4fEMhkgIbGtgCM-Imydv4auec/view?usp=sharing
+[Google Slides]: https://docs.google.com/presentation/d/1_6-byfyA9fM4opRT_4Z_3qjSMbKP0AeM4naKocOPtt8/edit?usp=sharing
