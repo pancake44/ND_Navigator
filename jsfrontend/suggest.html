@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Daily 14</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;700;900&display=swap" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+
+<body>
+
+	<div class="container-fluid" id="tbar"> </div> 
+	<div class="container-fluid" id="top">
+		<div class="col-md-12">
+			<a href="index_map.html">
+			<div class="link">
+			<h1 id="ndnav">ND Navigator</h1>
+			</div>
+			</a>
+			<h4 id="names">Gerry F. and Harry S.</h4>
+			<button onclick="showLinks('1')" class="dropbtn" id="dropbtn1" style="font-weight:bold;">About</button>
+			<div id="dropdown-content1" class="dropdown-content" id="dropdown-content1">
+				<a href="https://www.imdb.com/title/tt0302674/">Gerry</a>
+				<a href="https://www.harrys.com/en/us">Harry</a>
+				<a href="https://youtu.be/dQw4w9WgXcQ">Mission, Vision, and Values</a>
+			</div>
+			<button onclick="addPlace()" class="dropbtn" id="dropbtn2">Suggest</button>
+		  	<button onclick="showLinks('3')" class="dropbtn" id="dropbtn3">Links</button>
+			<div id="dropdown-content3" class="dropdown-content" id="dropdown-content3">
+				<a href="https://www.nd.edu/">ND</a>
+				<a href="https://www.google.com/maps">Google Maps</a>
+				<a href="https://www3.nd.edu/~skumar5/teaching/2020-fall-pp.html">Paradigms</a>
+			</div>	
+		</div>
+	</div>
+
+    <div class="container">
+        <h1>Can't find what you're looking for?</h1>
+		<h4>Make it a reality.</h4>
+        <p></p>
+
+
+        <form class="bsr-form " action="">
+            <div class="form-group">
+                <label id="label-enter" for="tex-input">Place Name</label>
+                <input name="text-input" type="text" class="form-control" id="input-name">
+            </div>
+            <div class="form-group">
+                <label id="label-enter" for="tex-input">Latitude</label>
+                <input name="text-input" type="text" class="form-control" id="input-lat">
+            </div>
+            <div class="form-group">
+                <label id="label-enter" for="tex-input">Longitude</label>
+                <input name="text-input" type="text" class="form-control" id="input-long">
+            </div>
+            <div class="form-group">
+                <label id="label-enter" for="tex-input">Description</label>
+                <textarea name="text-message-body" class="form-control" rows="3" id="input-desc"></textarea>
+            </div>
+			<div class="form-group" style="padding-bottom: 35vh;">
+                <button type="reset" class="btn btn-default" id="clear-button">Clear</button>
+                <button type="button" class="btn btn-primary" id="send-button">Send</button>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <div class="container-fluid"><hr><p class="text-muted">Bottom text</p></div>
+    </footer>
+    <script src="scripts/suggest.js"></script>
+	<script src="scripts/index_map.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
