@@ -41,7 +41,7 @@
 ## User Interaction
  + Preparation
    + Before going to the website, ensure that the server is running on student04.cse.nd.edu
-   + Visit the [website](http://hsnow567.gitlab.io/paradigms-fa20-web_startup/jsfrontend/index_map.html) to interact with the client
+   + Visit the [website](http://hsnow567.gitlab.io/paradigms-fa20-web_startup/jsfrontend/index_map.html) to interact with the client (IF SERVER ISN'T RUNNING, WON'T BE ABLE TO INTERACT WITH CLIENT)
  + Main Page Interaction
    + In the first dropdown, select starting location
    + Press "Add" to add a destination. Up to 9 destinations can be added.
@@ -68,11 +68,5 @@
    + Various dynamically-created buttons
  + Basic CSS styling (fonts, colors)
 
-## Presentation
- + Link to demonstration video: [Demonstration Video]
- + Link to code walkthrough video: [Code Walkthrough Video]
- + Link to presentation slides: [Google Slides]
-
-[Demonstration Video]: https://drive.google.com/file/d/1CCY8_cu68uU2gYtqabO5U7idbL2ey431/view?usp=sharing
-[Code Walkthrough Video]: https://drive.google.com/file/d/1c9r2KKI4fEMhkgIbGtgCM-Imydv4auec/view?usp=sharing
-[Google Slides]: https://docs.google.com/presentation/d/1_6-byfyA9fM4opRT_4Z_3qjSMbKP0AeM4naKocOPtt8/edit?usp=sharing
+## Video Demo (with voice-over)
++ View here: https://drive.google.com/file/d/1AC-b5zVeyxo-sumIk9O4xIEX_dU7Xtno/view?usp=sharing
