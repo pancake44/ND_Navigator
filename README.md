@@ -41,7 +41,7 @@
 ## User Interaction
  + Preparation
    + Before going to the website, ensure that the server is running on student04.cse.nd.edu
-   + Visit the [website](http://hsnow567.gitlab.io/paradigms-fa20-web_startup/jsfrontend/index_map.html) to interact with the client
+   + Visit the [website](http://hsnow567.gitlab.io/paradigms-fa20-web_startup/jsfrontend/index_map.html) to interact with the client (IF SERVER ISN'T RUNNING, WON'T BE ABLE TO INTERACT WITH CLIENT)
  + Interaction
    + In the first dropdown, select starting location
    + Press "Add" to add a destination. Any number of destinations can be added.
