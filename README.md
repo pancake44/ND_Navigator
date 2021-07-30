@@ -2,7 +2,7 @@
 
 ## Group Members
  - Harrison Snow (hsnow)
- - Gerry Fernandez (gfernnan2)
+ - (gfernnan2)
 
 ## OO API
  + Explanation of functions
