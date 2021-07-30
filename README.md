@@ -1,4 +1,4 @@
-# paradigms-fa20-web_startup
+# ND_Navigator
 
 ## Group Members
  - Harrison Snow (hsnow)
